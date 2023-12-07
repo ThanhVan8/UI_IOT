@@ -1,0 +1,1644 @@
+[
+    {
+        "id": "e8f3c78bf60f1cb5",
+        "type": "tab",
+        "label": "Authentication",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "69d15798baa0bd4a",
+        "type": "tab",
+        "label": "Open-door history",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "377d76101699f417",
+        "type": "tab",
+        "label": "Open door remote",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "24795196996c71c6",
+        "type": "tab",
+        "label": "Password setting",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "37b937f18a9b9403",
+        "type": "tab",
+        "label": "Card setting",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "fc4bc3d95db93427",
+        "type": "tab",
+        "label": "Others",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8784652f4df53f52",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "a98f1f5134af0f79",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a98f1f5134af0f79",
+        "type": "ui_tab",
+        "name": "Login",
+        "icon": " fa-sign-in",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "744f75fc62d28b76",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "2c45c42f4405f6b9",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": true
+    },
+    {
+        "id": "58ed85dc7f362a7e",
+        "type": "ui_group",
+        "name": "History",
+        "tab": "2c45c42f4405f6b9",
+        "order": 1,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d61508040186c2be",
+        "type": "ui_group",
+        "name": "Request",
+        "tab": "2c45c42f4405f6b9",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0da7ee0a093dd653",
+        "type": "ui_tab",
+        "name": "Setting",
+        "icon": "fa-cog",
+        "order": 3,
+        "disabled": false,
+        "hidden": true
+    },
+    {
+        "id": "59d8d615e4bc3ea8",
+        "type": "ui_group",
+        "name": "Password",
+        "tab": "0da7ee0a093dd653",
+        "order": 1,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3c203151a5c185da",
+        "type": "ui_group",
+        "name": "Add_Password",
+        "tab": "0da7ee0a093dd653",
+        "order": 2,
+        "disp": false,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "847ee913715a6bc1",
+        "type": "ui_group",
+        "name": "Delete_Password",
+        "tab": "0da7ee0a093dd653",
+        "order": 3,
+        "disp": false,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0c641f7d8cb07766",
+        "type": "ui_group",
+        "name": "Cards",
+        "tab": "0da7ee0a093dd653",
+        "order": 4,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "30d70e2f569b0487",
+        "type": "ui_group",
+        "name": "Others",
+        "tab": "0da7ee0a093dd653",
+        "order": 5,
+        "disp": true,
+        "width": "10",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a4afbff83344e8de",
+        "type": "ui_group",
+        "name": "Others_Form",
+        "tab": "0da7ee0a093dd653",
+        "order": 6,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "42e5663b5bbcdd14",
+        "type": "ui_ui_control",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "",
+        "events": "all",
+        "x": 860,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5b9ae03ef4429e44",
+        "type": "change",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "Login successfully",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"tabs\":{\"hide\":[\"Login\"],\"show\":[\"Home\",\"Setting\"]},\"tab\":\"Home\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 650,
+        "y": 160,
+        "wires": [
+            [
+                "42e5663b5bbcdd14"
+            ]
+        ]
+    },
+    {
+        "id": "0ef7829340cd340c",
+        "type": "change",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "Login failed",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"Login failed\"",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 240,
+        "wires": [
+            [
+                "086cb402d9374098"
+            ]
+        ]
+    },
+    {
+        "id": "52efced3bcc508de",
+        "type": "switch",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "5b9ae03ef4429e44",
+                "5a09763522cdabec"
+            ],
+            [
+                "0ef7829340cd340c"
+            ]
+        ]
+    },
+    {
+        "id": "086cb402d9374098",
+        "type": "ui_toast",
+        "z": "e8f3c78bf60f1cb5",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "red",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 890,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "41cb0ec98a7934db",
+        "type": "function",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "checkValid",
+        "func": "if (msg.payload.email == \"admin@1\" && msg.payload.password == \"admin\") {\n    // msg.payload = \"Login successfully\";\n    msg.payload = true;\n}\n// else if (msg.payload.username != \"admin\") {\n//     // msg.payload = \"Wrong username\";\n//     msg.payload = false;\n// }\nelse {\n    // msg.payload = \"Wrong password\";\n    msg.payload = false;\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "// Code added here will be run when the\n// node is being stopped or re-deployed.\nmsg.payload[\"tab\"] = \"Home\";\nreturn msg;",
+        "libs": [],
+        "x": 250,
+        "y": 200,
+        "wires": [
+            [
+                "52efced3bcc508de"
+            ]
+        ]
+    },
+    {
+        "id": "e21976abf8416352",
+        "type": "ui_form",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "",
+        "label": "Login",
+        "group": "8784652f4df53f52",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Email",
+                "value": "email",
+                "type": "email",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Password",
+                "value": "password",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "email": "",
+            "password": ""
+        },
+        "payload": "",
+        "submit": "LOGIN",
+        "cancel": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 70,
+        "y": 200,
+        "wires": [
+            [
+                "41cb0ec98a7934db"
+            ]
+        ]
+    },
+    {
+        "id": "5a09763522cdabec",
+        "type": "change",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "Set message noti",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"Login successfully\"",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 650,
+        "y": 80,
+        "wires": [
+            [
+                "7c12bb0358818f42"
+            ]
+        ]
+    },
+    {
+        "id": "7c12bb0358818f42",
+        "type": "ui_toast",
+        "z": "e8f3c78bf60f1cb5",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "green",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 890,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "a8bba05b40cc3e03",
+        "type": "inject",
+        "z": "69d15798baa0bd4a",
+        "name": "data",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"time\":\"30/11/2023\",\"method\":\"password\",\"isValid\":0,\"uid\":\"\"},{\"time\":\"29/11/2023\",\"method\":\"card\",\"isValid\":1,\"uid\":\"123\"}]",
+        "payloadType": "json",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "49a8b56f3efa3a45"
+            ]
+        ]
+    },
+    {
+        "id": "49a8b56f3efa3a45",
+        "type": "ui_table",
+        "z": "69d15798baa0bd4a",
+        "group": "58ed85dc7f362a7e",
+        "name": "History",
+        "order": 0,
+        "width": "0",
+        "height": "0",
+        "columns": [
+            {
+                "field": "time",
+                "title": "Time",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "method",
+                "title": "Method",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "isValid",
+                "title": "Is valid",
+                "width": "",
+                "align": "left",
+                "formatter": "tickCross",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "uid",
+                "title": "UID",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 320,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "0ba4f794d38274b7",
+        "type": "ui_text",
+        "z": "377d76101699f417",
+        "group": "d61508040186c2be",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "You have a request to open the door",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 230,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "ba0dfc0f0d928b65",
+        "type": "ui_button",
+        "z": "377d76101699f417",
+        "name": "",
+        "group": "d61508040186c2be",
+        "order": 1,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Accept",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "green",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 130,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "71628a583d87efb8",
+        "type": "ui_button",
+        "z": "377d76101699f417",
+        "name": "",
+        "group": "d61508040186c2be",
+        "order": 2,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Reject",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "red",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 130,
+        "y": 400,
+        "wires": [
+            [
+                "83392c3c1b1f945f"
+            ]
+        ]
+    },
+    {
+        "id": "1ecf15912264b08e",
+        "type": "inject",
+        "z": "377d76101699f417",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "3d8d85cf19f759d2"
+            ]
+        ]
+    },
+    {
+        "id": "c726ec9326ab4c8d",
+        "type": "ui_ui_control",
+        "z": "377d76101699f417",
+        "name": "",
+        "events": "all",
+        "x": 680,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d9c495ca6201d639",
+        "type": "change",
+        "z": "377d76101699f417",
+        "name": "show request",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"Home_Request\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 140,
+        "wires": [
+            [
+                "c726ec9326ab4c8d"
+            ]
+        ]
+    },
+    {
+        "id": "3d8d85cf19f759d2",
+        "type": "switch",
+        "z": "377d76101699f417",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 310,
+        "y": 180,
+        "wires": [
+            [
+                "d9c495ca6201d639"
+            ],
+            [
+                "83392c3c1b1f945f"
+            ]
+        ]
+    },
+    {
+        "id": "83392c3c1b1f945f",
+        "type": "change",
+        "z": "377d76101699f417",
+        "name": "hide request",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"hide\":[\"Home_Request\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 220,
+        "wires": [
+            [
+                "c726ec9326ab4c8d"
+            ]
+        ]
+    },
+    {
+        "id": "2cd4ab037e56a48e",
+        "type": "inject",
+        "z": "377d76101699f417",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 150,
+        "y": 200,
+        "wires": [
+            [
+                "3d8d85cf19f759d2"
+            ]
+        ]
+    },
+    {
+        "id": "34889b9b348da88d",
+        "type": "ui_ui-button",
+        "z": "24795196996c71c6",
+        "action": "click",
+        "actionType": "str",
+        "name": "add",
+        "group": "3c203151a5c185da",
+        "order": 3,
+        "width": "5",
+        "height": "1",
+        "passthru": false,
+        "label": "Add",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "x": 370,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "92071c64e5fd649a",
+        "type": "inject",
+        "z": "24795196996c71c6",
+        "name": "password",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "abc",
+        "payloadType": "str",
+        "x": 220,
+        "y": 180,
+        "wires": [
+            [
+                "da490973ae97ee82"
+            ]
+        ]
+    },
+    {
+        "id": "da490973ae97ee82",
+        "type": "switch",
+        "z": "24795196996c71c6",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 370,
+        "y": 220,
+        "wires": [
+            [
+                "c83ff7b0933bbd7c",
+                "cf86d3801cf971bc"
+            ],
+            [
+                "269cfd5a9f778e84",
+                "e9a285525e788f1d"
+            ]
+        ]
+    },
+    {
+        "id": "f63873f2ffd4d005",
+        "type": "ui_button",
+        "z": "24795196996c71c6",
+        "name": "",
+        "group": "847ee913715a6bc1",
+        "order": 1,
+        "width": "5",
+        "height": "1",
+        "passthru": false,
+        "label": "Delete",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "red",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 370,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cf5e1884af1065dc",
+        "type": "ui_ui_control",
+        "z": "24795196996c71c6",
+        "name": "show add pw",
+        "events": "all",
+        "x": 730,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c83ff7b0933bbd7c",
+        "type": "change",
+        "z": "24795196996c71c6",
+        "name": "if null",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"Setting_Add_Password\"],\"hide\":[\"Setting_Delete_Password\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 140,
+        "wires": [
+            [
+                "cf5e1884af1065dc"
+            ]
+        ]
+    },
+    {
+        "id": "e5a5d7929afa5a1e",
+        "type": "ui_ui_control",
+        "z": "24795196996c71c6",
+        "name": "show delete pw",
+        "events": "all",
+        "x": 740,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "269cfd5a9f778e84",
+        "type": "change",
+        "z": "24795196996c71c6",
+        "name": "if have",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"hide\":[\"Setting_Add_Password\"],\"show\":[\"Setting_Delete_Password\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 280,
+        "wires": [
+            [
+                "e5a5d7929afa5a1e"
+            ]
+        ]
+    },
+    {
+        "id": "e9a285525e788f1d",
+        "type": "ui_text",
+        "z": "24795196996c71c6",
+        "group": "59d8d615e4bc3ea8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Current password: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 850,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "e97c9352bb42f735",
+        "type": "ui_text_input",
+        "z": "24795196996c71c6",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "group": "3c203151a5c185da",
+        "order": 2,
+        "width": "5",
+        "height": "1",
+        "passthru": true,
+        "mode": "password",
+        "delay": "0",
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 400,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cf86d3801cf971bc",
+        "type": "change",
+        "z": "24795196996c71c6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Not have password yet",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 60,
+        "wires": [
+            [
+                "e9a285525e788f1d"
+            ]
+        ]
+    },
+    {
+        "id": "63cc47c589bafdfa",
+        "type": "ui_text",
+        "z": "24795196996c71c6",
+        "group": "3c203151a5c185da",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "New password",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 400,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "5e4c5c4dfd67c55f",
+        "type": "inject",
+        "z": "24795196996c71c6",
+        "name": "empty password",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 200,
+        "y": 280,
+        "wires": [
+            [
+                "da490973ae97ee82"
+            ]
+        ]
+    },
+    {
+        "id": "69f5881b383eb023",
+        "type": "ui_list",
+        "z": "37b937f18a9b9403",
+        "group": "0c641f7d8cb07766",
+        "name": "card list",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "lineType": "three",
+        "actionType": "menu",
+        "allowHTML": false,
+        "outputs": 1,
+        "topic": "",
+        "x": 480,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a938ddf8ce85deab",
+        "type": "inject",
+        "z": "37b937f18a9b9403",
+        "name": "data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[\"123\",\"456\"]",
+        "payloadType": "json",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "fc0c60b09610a81f"
+            ]
+        ]
+    },
+    {
+        "id": "fc0c60b09610a81f",
+        "type": "function",
+        "z": "37b937f18a9b9403",
+        "name": "convert to ui-list",
+        "func": "const cardObjs = []\nmsg.payload.forEach(function(uid) {\n    cardObjs.push({\"title\": uid, \"menu\": [\"Remove\"]})\n});\nmsg.payload = cardObjs\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 120,
+        "wires": [
+            [
+                "69f5881b383eb023"
+            ]
+        ]
+    },
+    {
+        "id": "4a0f712f941354f8",
+        "type": "ui_form",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "label": "",
+        "group": "a4afbff83344e8de",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Incorrect input in (times)",
+                "value": "timesIncorrect",
+                "type": "number",
+                "required": false,
+                "rows": null
+            },
+            {
+                "label": "Lock in (seconds)",
+                "value": "lockTime",
+                "type": "number",
+                "required": false,
+                "rows": null
+            },
+            {
+                "label": "Alarm sounds within (seconds)",
+                "value": "soundTime",
+                "type": "number",
+                "required": false,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "timesIncorrect": "",
+            "lockTime": "",
+            "soundTime": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 90,
+        "y": 640,
+        "wires": [
+            [
+                "03202adc2609059c",
+                "12fea1876b81f1e5",
+                "c94bc51f35a80a7d"
+            ]
+        ]
+    },
+    {
+        "id": "1a26611f652c65ba",
+        "type": "ui_text",
+        "z": "fc4bc3d95db93427",
+        "group": "30d70e2f569b0487",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Incorrect input in {{msg.payload}} times",
+        "format": "",
+        "layout": "row-spread",
+        "className": "",
+        "style": true,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 270,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "3903b0ce921acd48",
+        "type": "inject",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 130,
+        "y": 280,
+        "wires": [
+            [
+                "1a26611f652c65ba"
+            ]
+        ]
+    },
+    {
+        "id": "0e6a32a0de09632c",
+        "type": "ui_text",
+        "z": "fc4bc3d95db93427",
+        "group": "30d70e2f569b0487",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "will lock in {{msg.payload}} seconds",
+        "format": "",
+        "layout": "row-spread",
+        "className": "",
+        "style": true,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 270,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "2e1fa4f88d2f55f1",
+        "type": "inject",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 130,
+        "y": 340,
+        "wires": [
+            [
+                "0e6a32a0de09632c"
+            ]
+        ]
+    },
+    {
+        "id": "40726f4453fc7c64",
+        "type": "ui_text",
+        "z": "fc4bc3d95db93427",
+        "group": "30d70e2f569b0487",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "and alarm will sound within {{msg.payload}} seconds",
+        "format": "",
+        "layout": "row-spread",
+        "className": "",
+        "style": true,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 270,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "3254ca97a105271c",
+        "type": "inject",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 130,
+        "y": 400,
+        "wires": [
+            [
+                "40726f4453fc7c64"
+            ]
+        ]
+    },
+    {
+        "id": "f337e4c9ad53c2f3",
+        "type": "ui_button",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "group": "30d70e2f569b0487",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Change",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 120,
+        "y": 560,
+        "wires": [
+            [
+                "2556a74b4f385095"
+            ]
+        ]
+    },
+    {
+        "id": "2556a74b4f385095",
+        "type": "change",
+        "z": "fc4bc3d95db93427",
+        "name": "show form",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"Setting_Others_Form\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 560,
+        "wires": [
+            [
+                "aabb2f5be26e6bba"
+            ]
+        ]
+    },
+    {
+        "id": "aabb2f5be26e6bba",
+        "type": "ui_ui_control",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "events": "all",
+        "x": 480,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "03202adc2609059c",
+        "type": "change",
+        "z": "fc4bc3d95db93427",
+        "name": "hide form",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"hide\":[\"Setting_Others_Form\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 480,
+        "wires": [
+            [
+                "2e5fe27c3cbe9963"
+            ]
+        ]
+    },
+    {
+        "id": "2e5fe27c3cbe9963",
+        "type": "ui_ui_control",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "events": "all",
+        "x": 500,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "da950101af6bed06",
+        "type": "inject",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 480,
+        "wires": [
+            [
+                "03202adc2609059c"
+            ]
+        ]
+    },
+    {
+        "id": "aabd957c4e4e2696",
+        "type": "comment",
+        "z": "fc4bc3d95db93427",
+        "name": "handle submit",
+        "info": "",
+        "x": 510,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "3acddf9bf5b56cd6",
+        "type": "ui_toast",
+        "z": "fc4bc3d95db93427",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "green",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 770,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "10401aa63b8dbb95",
+        "type": "change",
+        "z": "fc4bc3d95db93427",
+        "name": "show noti success",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Change setting successfully",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 840,
+        "wires": [
+            [
+                "3acddf9bf5b56cd6"
+            ]
+        ]
+    },
+    {
+        "id": "12fea1876b81f1e5",
+        "type": "debug",
+        "z": "fc4bc3d95db93427",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 260,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "69d848291e2188ad",
+        "type": "switch",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 490,
+        "y": 720,
+        "wires": [
+            [
+                "10401aa63b8dbb95"
+            ]
+        ]
+    },
+    {
+        "id": "c94bc51f35a80a7d",
+        "type": "function",
+        "z": "fc4bc3d95db93427",
+        "name": "check if all fields null",
+        "func": "if(msg.payload.timesIncorrect == null &&\n    msg.payload.lockTime == null &&\n    msg.payload.soundTime == null)\n    msg.payload = null\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 720,
+        "wires": [
+            [
+                "69d848291e2188ad"
+            ]
+        ]
+    }
+]
