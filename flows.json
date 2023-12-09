@@ -65,7 +65,7 @@
         "icon": " fa-sign-in",
         "order": 1,
         "disabled": false,
-        "hidden": false
+        "hidden": true
     },
     {
         "id": "744f75fc62d28b76",
@@ -207,7 +207,7 @@
     {
         "id": "59d8d615e4bc3ea8",
         "type": "ui_group",
-        "name": "Password",
+        "name": "Password-key",
         "tab": "0da7ee0a093dd653",
         "order": 1,
         "disp": true,
@@ -218,20 +218,9 @@
     {
         "id": "3c203151a5c185da",
         "type": "ui_group",
-        "name": "Add_Password",
+        "name": "Password-admin",
         "tab": "0da7ee0a093dd653",
         "order": 2,
-        "disp": false,
-        "width": "20",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "847ee913715a6bc1",
-        "type": "ui_group",
-        "name": "Delete_Password",
-        "tab": "0da7ee0a093dd653",
-        "order": 3,
         "disp": false,
         "width": "20",
         "collapse": false,
@@ -271,13 +260,44 @@
         "className": ""
     },
     {
+        "id": "0ebf5054103628db",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
         "id": "42e5663b5bbcdd14",
         "type": "ui_ui_control",
         "z": "e8f3c78bf60f1cb5",
         "name": "",
         "events": "all",
-        "x": 860,
-        "y": 160,
+        "x": 880,
+        "y": 280,
         "wires": [
             []
         ]
@@ -286,7 +306,7 @@
         "id": "5b9ae03ef4429e44",
         "type": "change",
         "z": "e8f3c78bf60f1cb5",
-        "name": "Login successfully",
+        "name": "show other tabs",
         "rules": [
             {
                 "t": "set",
@@ -301,38 +321,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 650,
-        "y": 160,
+        "x": 660,
+        "y": 280,
         "wires": [
             [
                 "42e5663b5bbcdd14"
-            ]
-        ]
-    },
-    {
-        "id": "0ef7829340cd340c",
-        "type": "change",
-        "z": "e8f3c78bf60f1cb5",
-        "name": "Login failed",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "\"Login failed\"",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 630,
-        "y": 240,
-        "wires": [
-            [
-                "086cb402d9374098"
             ]
         ]
     },
@@ -348,21 +341,21 @@
                 "t": "true"
             },
             {
-                "t": "false"
+                "t": "else"
             }
         ],
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 410,
-        "y": 200,
+        "x": 430,
+        "y": 320,
         "wires": [
             [
                 "5b9ae03ef4429e44",
                 "5a09763522cdabec"
             ],
             [
-                "0ef7829340cd340c"
+                "086cb402d9374098"
             ]
         ]
     },
@@ -371,7 +364,7 @@
         "type": "ui_toast",
         "z": "e8f3c78bf60f1cb5",
         "position": "top right",
-        "displayTime": "3",
+        "displayTime": "2",
         "highlight": "red",
         "sendall": true,
         "outputs": 0,
@@ -380,9 +373,9 @@
         "raw": false,
         "className": "",
         "topic": "",
-        "name": "",
-        "x": 890,
-        "y": 240,
+        "name": "fail",
+        "x": 630,
+        "y": 360,
         "wires": []
     },
     {
@@ -390,7 +383,7 @@
         "type": "function",
         "z": "e8f3c78bf60f1cb5",
         "name": "checkValid",
-        "func": "if (msg.payload.email == \"admin@1\" && msg.payload.password == \"admin\") {\n    // msg.payload = \"Login successfully\";\n    msg.payload = true;\n}\n// else if (msg.payload.username != \"admin\") {\n//     // msg.payload = \"Wrong username\";\n//     msg.payload = false;\n// }\nelse {\n    // msg.payload = \"Wrong password\";\n    msg.payload = false;\n}\nreturn msg;",
+        "func": "if (msg.payload.email == flow.get('email') && msg.payload.password == flow.get('password')) {\n    msg.payload = true;\n}\nelse if (msg.payload.email != flow.get('email')) {\n    msg.payload = \"Sai email\";\n}\nelse {\n    msg.payload = \"Sai mật khẩu\";\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -398,7 +391,7 @@
         "finalize": "// Code added here will be run when the\n// node is being stopped or re-deployed.\nmsg.payload[\"tab\"] = \"Home\";\nreturn msg;",
         "libs": [],
         "x": 250,
-        "y": 200,
+        "y": 320,
         "wires": [
             [
                 "52efced3bcc508de"
@@ -442,8 +435,8 @@
         "topicType": "msg",
         "splitLayout": "",
         "className": "",
-        "x": 70,
-        "y": 200,
+        "x": 90,
+        "y": 320,
         "wires": [
             [
                 "41cb0ec98a7934db"
@@ -454,14 +447,24 @@
         "id": "5a09763522cdabec",
         "type": "change",
         "z": "e8f3c78bf60f1cb5",
-        "name": "Set message noti",
+        "name": "set noti success",
         "rules": [
             {
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "\"Login successfully\"",
+                "to": "\"Đăng nhập thành công\"",
                 "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "email",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "password",
+                "pt": "flow"
             }
         ],
         "action": "",
@@ -469,8 +472,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 650,
-        "y": 80,
+        "x": 660,
+        "y": 200,
         "wires": [
             [
                 "7c12bb0358818f42"
@@ -491,19 +494,75 @@
         "raw": false,
         "className": "",
         "topic": "",
-        "name": "",
-        "x": 890,
-        "y": 80,
+        "name": "success",
+        "x": 860,
+        "y": 200,
         "wires": []
     },
     {
-        "id": "a8bba05b40cc3e03",
+        "id": "2b790290afff84f2",
+        "type": "http request",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/channels/2371399/feeds.json?api_key=MYC796JMT0ZR6W4L&results=1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 120,
+        "wires": [
+            [
+                "12081aefcb967257"
+            ]
+        ]
+    },
+    {
+        "id": "12081aefcb967257",
+        "type": "json",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 470,
+        "y": 120,
+        "wires": [
+            [
+                "126f4343190fca01"
+            ]
+        ]
+    },
+    {
+        "id": "97f28b0e51cf2c91",
         "type": "inject",
-        "z": "69d15798baa0bd4a",
-        "name": "data",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "",
         "props": [
             {
-                "p": "payload"
+                "p": "payload.email",
+                "v": "btv@gmail.com",
+                "vt": "str"
+            },
+            {
+                "p": "payload.password",
+                "v": "btv123",
+                "vt": "str"
+            },
+            {
+                "p": "payload.uids",
+                "v": "[\"123\", \"456\"]",
+                "vt": "json"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
             }
         ],
         "repeat": "",
@@ -511,13 +570,128 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "[{\"time\":\"30/11/2023\",\"method\":\"password\",\"isValid\":0,\"uid\":\"\"},{\"time\":\"29/11/2023\",\"method\":\"card\",\"isValid\":1,\"uid\":\"123\"}]",
-        "payloadType": "json",
-        "x": 150,
-        "y": 80,
+        "x": 90,
+        "y": 60,
         "wires": [
             [
-                "49a8b56f3efa3a45"
+                "fba57c79c52168d4"
+            ]
+        ]
+    },
+    {
+        "id": "67f24e86abb25aa4",
+        "type": "http request",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/update.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 490,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cd1243c7946cf622",
+        "type": "inject",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "2b790290afff84f2"
+            ]
+        ]
+    },
+    {
+        "id": "126f4343190fca01",
+        "type": "change",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "get acc from cloud",
+        "rules": [
+            {
+                "t": "set",
+                "p": "email",
+                "pt": "flow",
+                "to": "payload.feeds[0].field1",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "flow",
+                "to": "payload.feeds[0].field2",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fba57c79c52168d4",
+        "type": "change",
+        "z": "e8f3c78bf60f1cb5",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"api_key\":\"8MQ6OOBCODPX2I0Z\",\"field1\":\"btv@gmail.com\",\"field2\":\"btv123\",\"field3\":\"123\",\"field4\":\"456\",\"field5\":5,\"field6\":60,\"field7\":10,\"field8\":\"456\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 60,
+        "wires": [
+            [
+                "67f24e86abb25aa4"
             ]
         ]
     },
@@ -533,7 +707,7 @@
         "columns": [
             {
                 "field": "time",
-                "title": "Time",
+                "title": "Thời gian",
                 "width": "",
                 "align": "left",
                 "formatter": "plaintext",
@@ -543,7 +717,7 @@
             },
             {
                 "field": "method",
-                "title": "Method",
+                "title": "Phương thức mở",
                 "width": "",
                 "align": "left",
                 "formatter": "plaintext",
@@ -552,8 +726,8 @@
                 }
             },
             {
-                "field": "isValid",
-                "title": "Is valid",
+                "field": "status",
+                "title": "Trạng thái",
                 "width": "",
                 "align": "left",
                 "formatter": "tickCross",
@@ -574,9 +748,161 @@
         ],
         "outputs": 0,
         "cts": false,
-        "x": 320,
-        "y": 80,
+        "x": 780,
+        "y": 120,
         "wires": []
+    },
+    {
+        "id": "fe0ee6c0cb3e6560",
+        "type": "inject",
+        "z": "69d15798baa0bd4a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "2cdbc7da3c1b26a2"
+            ]
+        ]
+    },
+    {
+        "id": "2cdbc7da3c1b26a2",
+        "type": "http request",
+        "z": "69d15798baa0bd4a",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/channels/2372286/feeds.json?api_key=3QTKD73Z92GV0WG9&results=20",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 120,
+        "wires": [
+            [
+                "d8d4557ada0ee7dd"
+            ]
+        ]
+    },
+    {
+        "id": "d8d4557ada0ee7dd",
+        "type": "json",
+        "z": "69d15798baa0bd4a",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 470,
+        "y": 120,
+        "wires": [
+            [
+                "67975cc16d6705c2"
+            ]
+        ]
+    },
+    {
+        "id": "6ff58a385cc8e97c",
+        "type": "inject",
+        "z": "69d15798baa0bd4a",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload.method",
+                "v": "thẻ",
+                "vt": "str"
+            },
+            {
+                "p": "payload.status",
+                "v": "false",
+                "vt": "bool"
+            },
+            {
+                "p": "payload.uid",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 40,
+        "wires": [
+            [
+                "cbf5e48ef3534d75"
+            ]
+        ]
+    },
+    {
+        "id": "cbf5e48ef3534d75",
+        "type": "http request",
+        "z": "69d15798baa0bd4a",
+        "d": true,
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/update?api_key=CZ3WNOQBX0A6SUA8&field1={{payload.method}}&field2={{payload.status}}&field3={{payload.uid}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 270,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "67975cc16d6705c2",
+        "type": "function",
+        "z": "69d15798baa0bd4a",
+        "name": "push to array",
+        "func": "var history = []\nmsg.payload.feeds.forEach(function(feed) {\n    history.push({\n        \"time\": new Date(feed[\"created_at\"]).toLocaleString('en-US'),\n        \"method\": feed.field1,\n        \"status\": feed.field2,\n        \"uid\": feed.field3\n    })\n});\nmsg.payload = history;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 120,
+        "wires": [
+            [
+                "49a8b56f3efa3a45"
+            ]
+        ]
     },
     {
         "id": "0ba4f794d38274b7",
@@ -596,7 +922,7 @@
         "fontSize": 16,
         "color": "#000000",
         "x": 230,
-        "y": 320,
+        "y": 300,
         "wires": []
     },
     {
@@ -615,14 +941,16 @@
         "bgcolor": "green",
         "className": "",
         "icon": "",
-        "payload": "",
-        "payloadType": "str",
+        "payload": "true",
+        "payloadType": "bool",
         "topic": "topic",
         "topicType": "msg",
         "x": 130,
         "y": 360,
         "wires": [
-            []
+            [
+                "bd93f1e7f00c75e3"
+            ]
         ]
     },
     {
@@ -641,15 +969,15 @@
         "bgcolor": "red",
         "className": "",
         "icon": "",
-        "payload": "",
-        "payloadType": "str",
+        "payload": "false",
+        "payloadType": "bool",
         "topic": "topic",
         "topicType": "msg",
         "x": 130,
-        "y": 400,
+        "y": 420,
         "wires": [
             [
-                "83392c3c1b1f945f"
+                "bd93f1e7f00c75e3"
             ]
         ]
     },
@@ -657,6 +985,7 @@
         "id": "1ecf15912264b08e",
         "type": "inject",
         "z": "377d76101699f417",
+        "d": true,
         "name": "",
         "props": [
             {
@@ -674,12 +1003,10 @@
         "topic": "",
         "payload": "true",
         "payloadType": "bool",
-        "x": 150,
-        "y": 140,
+        "x": 290,
+        "y": 40,
         "wires": [
-            [
-                "3d8d85cf19f759d2"
-            ]
+            []
         ]
     },
     {
@@ -730,10 +1057,12 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "true"
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
             },
             {
-                "t": "false"
+                "t": "else"
             }
         ],
         "checkall": "true",
@@ -781,6 +1110,7 @@
         "id": "2cd4ab037e56a48e",
         "type": "inject",
         "z": "377d76101699f417",
+        "d": true,
         "name": "",
         "props": [
             {
@@ -798,78 +1128,88 @@
         "topic": "",
         "payload": "false",
         "payloadType": "bool",
-        "x": 150,
-        "y": 200,
-        "wires": [
-            [
-                "3d8d85cf19f759d2"
-            ]
-        ]
-    },
-    {
-        "id": "34889b9b348da88d",
-        "type": "ui_ui-button",
-        "z": "24795196996c71c6",
-        "action": "click",
-        "actionType": "str",
-        "name": "add",
-        "group": "3c203151a5c185da",
-        "order": 3,
-        "width": "5",
-        "height": "1",
-        "passthru": false,
-        "label": "Add",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "x": 370,
-        "y": 500,
+        "x": 290,
+        "y": 100,
         "wires": [
             []
         ]
     },
     {
-        "id": "92071c64e5fd649a",
-        "type": "inject",
-        "z": "24795196996c71c6",
-        "name": "password",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "abc",
-        "payloadType": "str",
-        "x": 220,
+        "id": "281d791ddf97c087",
+        "type": "mqtt in",
+        "z": "377d76101699f417",
+        "name": "",
+        "topic": "08/open-request",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "0ebf5054103628db",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
         "y": 180,
         "wires": [
             [
-                "da490973ae97ee82"
+                "3d8d85cf19f759d2",
+                "93e3900162cafcd7"
             ]
         ]
+    },
+    {
+        "id": "bd93f1e7f00c75e3",
+        "type": "mqtt out",
+        "z": "377d76101699f417",
+        "name": "",
+        "topic": "08/handle-open-remote",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "0ebf5054103628db",
+        "x": 410,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "93e3900162cafcd7",
+        "type": "debug",
+        "z": "377d76101699f417",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 240,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "1cd0546a99032403",
+        "type": "comment",
+        "z": "377d76101699f417",
+        "name": "",
+        "info": "handle xong -> từ mạch publish lên topic open-request là 0 để ẩn request",
+        "x": 620,
+        "y": 380,
+        "wires": []
     },
     {
         "id": "da490973ae97ee82",
         "type": "switch",
         "z": "24795196996c71c6",
         "name": "",
-        "property": "payload",
+        "property": "payload.feeds[0].field3",
         "propertyType": "msg",
         "rules": [
             {
-                "t": "eq",
-                "v": "",
-                "vt": "str"
+                "t": "null"
             },
             {
                 "t": "else"
@@ -878,120 +1218,14 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 370,
-        "y": 220,
+        "x": 1130,
+        "y": 240,
         "wires": [
             [
-                "c83ff7b0933bbd7c",
                 "cf86d3801cf971bc"
             ],
             [
-                "269cfd5a9f778e84",
-                "e9a285525e788f1d"
-            ]
-        ]
-    },
-    {
-        "id": "f63873f2ffd4d005",
-        "type": "ui_button",
-        "z": "24795196996c71c6",
-        "name": "",
-        "group": "847ee913715a6bc1",
-        "order": 1,
-        "width": "5",
-        "height": "1",
-        "passthru": false,
-        "label": "Delete",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "red",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 370,
-        "y": 600,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "cf5e1884af1065dc",
-        "type": "ui_ui_control",
-        "z": "24795196996c71c6",
-        "name": "show add pw",
-        "events": "all",
-        "x": 730,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c83ff7b0933bbd7c",
-        "type": "change",
-        "z": "24795196996c71c6",
-        "name": "if null",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "{\"group\":{\"show\":[\"Setting_Add_Password\"],\"hide\":[\"Setting_Delete_Password\"]}}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 550,
-        "y": 140,
-        "wires": [
-            [
-                "cf5e1884af1065dc"
-            ]
-        ]
-    },
-    {
-        "id": "e5a5d7929afa5a1e",
-        "type": "ui_ui_control",
-        "z": "24795196996c71c6",
-        "name": "show delete pw",
-        "events": "all",
-        "x": 740,
-        "y": 280,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "269cfd5a9f778e84",
-        "type": "change",
-        "z": "24795196996c71c6",
-        "name": "if have",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "{\"group\":{\"hide\":[\"Setting_Add_Password\"],\"show\":[\"Setting_Delete_Password\"]}}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 550,
-        "y": 280,
-        "wires": [
-            [
-                "e5a5d7929afa5a1e"
+                "e9974d971981c077"
             ]
         ]
     },
@@ -1000,11 +1234,11 @@
         "type": "ui_text",
         "z": "24795196996c71c6",
         "group": "59d8d615e4bc3ea8",
-        "order": 2,
+        "order": 1,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "Current password: ",
+        "label": "Current key-password: ",
         "format": "{{msg.payload}}",
         "layout": "row-left",
         "className": "",
@@ -1012,8 +1246,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 850,
-        "y": 60,
+        "x": 1600,
+        "y": 160,
         "wires": []
     },
     {
@@ -1021,9 +1255,9 @@
         "type": "ui_text_input",
         "z": "24795196996c71c6",
         "name": "",
-        "label": "",
+        "label": "New key-password",
         "tooltip": "",
-        "group": "3c203151a5c185da",
+        "group": "59d8d615e4bc3ea8",
         "order": 2,
         "width": "5",
         "height": "1",
@@ -1034,17 +1268,19 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "msg",
-        "x": 400,
-        "y": 460,
+        "x": 150,
+        "y": 500,
         "wires": [
-            []
+            [
+                "cac5aaee4f4d7ed2"
+            ]
         ]
     },
     {
         "id": "cf86d3801cf971bc",
         "type": "change",
         "z": "24795196996c71c6",
-        "name": "",
+        "name": "set noti",
         "rules": [
             {
                 "t": "set",
@@ -1059,8 +1295,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 580,
-        "y": 60,
+        "x": 1300,
+        "y": 160,
         "wires": [
             [
                 "e9a285525e788f1d"
@@ -1068,31 +1304,87 @@
         ]
     },
     {
-        "id": "63cc47c589bafdfa",
-        "type": "ui_text",
-        "z": "24795196996c71c6",
-        "group": "3c203151a5c185da",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "New password",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 400,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "5e4c5c4dfd67c55f",
+        "id": "7084077281f6144c",
         "type": "inject",
         "z": "24795196996c71c6",
-        "name": "empty password",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "63d9a299fb02dd53"
+            ]
+        ]
+    },
+    {
+        "id": "e6a2c32e2cb0f6ab",
+        "type": "json",
+        "z": "24795196996c71c6",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 490,
+        "y": 220,
+        "wires": [
+            [
+                "b5096897f8da1b3b"
+            ]
+        ]
+    },
+    {
+        "id": "b5096897f8da1b3b",
+        "type": "switch",
+        "z": "24795196996c71c6",
+        "name": "check if not have data",
+        "property": "payload.feeds",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 680,
+        "y": 220,
+        "wires": [
+            [
+                "cf86d3801cf971bc",
+                "0407c44eafcc943a"
+            ],
+            [
+                "da490973ae97ee82",
+                "4616edad8d84c721"
+            ]
+        ]
+    },
+    {
+        "id": "5e992207c3bf8cda",
+        "type": "inject",
+        "z": "24795196996c71c6",
+        "d": true,
+        "name": "",
         "props": [
             {
                 "p": "payload"
@@ -1108,12 +1400,554 @@
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
-        "payloadType": "str",
-        "x": 200,
-        "y": 280,
+        "payloadType": "date",
+        "x": 120,
+        "y": 60,
         "wires": [
             [
-                "da490973ae97ee82"
+                "99163c871cb822c5"
+            ]
+        ]
+    },
+    {
+        "id": "99163c871cb822c5",
+        "type": "http request",
+        "z": "24795196996c71c6",
+        "d": true,
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/update?api_key=8MQ6OOBCODPX2I0Z&field3=123",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "05ca11fe70e518db",
+        "type": "ui_button",
+        "z": "24795196996c71c6",
+        "name": "",
+        "group": "59d8d615e4bc3ea8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Change",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "newPassword",
+        "payloadType": "flow",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 540,
+        "y": 500,
+        "wires": [
+            [
+                "3026ae580dbd94aa"
+            ]
+        ]
+    },
+    {
+        "id": "cac5aaee4f4d7ed2",
+        "type": "change",
+        "z": "24795196996c71c6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "newPassword",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 500,
+        "wires": [
+            [
+                "05ca11fe70e518db"
+            ]
+        ]
+    },
+    {
+        "id": "9791eaf9e448dd3f",
+        "type": "function",
+        "z": "24795196996c71c6",
+        "name": "get lastest info",
+        "func": "const info = msg.payload.feeds[0]\nconst {created_at, entry_id, ...fields} = info\n\nmsg.payload = { \n    \"api_key\": \"8MQ6OOBCODPX2I0Z\",\n    ...fields,\n    \"field3\": flow.get('newPassword')\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 600,
+        "wires": [
+            [
+                "6e968c9f95faf2c1"
+            ]
+        ]
+    },
+    {
+        "id": "3026ae580dbd94aa",
+        "type": "http request",
+        "z": "24795196996c71c6",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/channels/2371399/feeds.json?api_key=MYC796JMT0ZR6W4L&results=1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 690,
+        "y": 600,
+        "wires": [
+            [
+                "b6f6ad70da1d40d5"
+            ]
+        ]
+    },
+    {
+        "id": "9d7bcdc1a26a03ca",
+        "type": "change",
+        "z": "24795196996c71c6",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "newPassword",
+                "pt": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1430,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6e968c9f95faf2c1",
+        "type": "http request",
+        "z": "24795196996c71c6",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "https://api.thingspeak.com/update.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 1210,
+        "y": 600,
+        "wires": [
+            [
+                "9d7bcdc1a26a03ca"
+            ]
+        ]
+    },
+    {
+        "id": "b6f6ad70da1d40d5",
+        "type": "json",
+        "z": "24795196996c71c6",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 850,
+        "y": 600,
+        "wires": [
+            [
+                "9791eaf9e448dd3f"
+            ]
+        ]
+    },
+    {
+        "id": "4616edad8d84c721",
+        "type": "switch",
+        "z": "24795196996c71c6",
+        "name": "",
+        "property": "payload.feeds[0].field8",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1110,
+        "y": 320,
+        "wires": [
+            [
+                "0407c44eafcc943a"
+            ],
+            [
+                "133b7b5327a62e44"
+            ]
+        ]
+    },
+    {
+        "id": "921bc309d43dd57c",
+        "type": "ui_text",
+        "z": "24795196996c71c6",
+        "group": "3c203151a5c185da",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Current admin-password: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1590,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "0407c44eafcc943a",
+        "type": "change",
+        "z": "24795196996c71c6",
+        "name": "set noti",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Not have password yet",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1280,
+        "y": 300,
+        "wires": [
+            [
+                "921bc309d43dd57c"
+            ]
+        ]
+    },
+    {
+        "id": "47434ce6e42809cc",
+        "type": "ui_text_input",
+        "z": "24795196996c71c6",
+        "name": "",
+        "label": "New admin-password",
+        "tooltip": "",
+        "group": "3c203151a5c185da",
+        "order": 2,
+        "width": "5",
+        "height": "1",
+        "passthru": true,
+        "mode": "password",
+        "delay": "0",
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 120,
+        "y": 720,
+        "wires": [
+            [
+                "9564db75c172abd5"
+            ]
+        ]
+    },
+    {
+        "id": "df7a0acefc96d8a1",
+        "type": "ui_button",
+        "z": "24795196996c71c6",
+        "name": "",
+        "group": "3c203151a5c185da",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Change",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "newAdminPassword",
+        "payloadType": "flow",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 540,
+        "y": 720,
+        "wires": [
+            [
+                "3c8cc24f39a3acbd"
+            ]
+        ]
+    },
+    {
+        "id": "9564db75c172abd5",
+        "type": "change",
+        "z": "24795196996c71c6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "newPassword",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 720,
+        "wires": [
+            [
+                "df7a0acefc96d8a1"
+            ]
+        ]
+    },
+    {
+        "id": "3c8cc24f39a3acbd",
+        "type": "http request",
+        "z": "24795196996c71c6",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/channels/2371399/feeds.json?api_key=MYC796JMT0ZR6W4L&results=1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 690,
+        "y": 820,
+        "wires": [
+            [
+                "bbe40d253ba787b0"
+            ]
+        ]
+    },
+    {
+        "id": "33f08916857cb008",
+        "type": "function",
+        "z": "24795196996c71c6",
+        "name": "get lastest info",
+        "func": "const info = msg.payload.feeds[0]\nconst {created_at, entry_id, ...fields} = info\n\nmsg.payload = { \n    \"api_key\": \"8MQ6OOBCODPX2I0Z\",\n    ...fields,\n    \"field8\": flow.get('newPassword')\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 820,
+        "wires": [
+            [
+                "24c86b3b41559c0e"
+            ]
+        ]
+    },
+    {
+        "id": "24c86b3b41559c0e",
+        "type": "http request",
+        "z": "24795196996c71c6",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "https://api.thingspeak.com/update.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 1210,
+        "y": 820,
+        "wires": [
+            [
+                "93f8ccb3b0f03303"
+            ]
+        ]
+    },
+    {
+        "id": "bbe40d253ba787b0",
+        "type": "json",
+        "z": "24795196996c71c6",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 850,
+        "y": 820,
+        "wires": [
+            [
+                "33f08916857cb008"
+            ]
+        ]
+    },
+    {
+        "id": "93f8ccb3b0f03303",
+        "type": "change",
+        "z": "24795196996c71c6",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "newAdminPassword",
+                "pt": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1450,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e9974d971981c077",
+        "type": "change",
+        "z": "24795196996c71c6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.feeds[0].field3",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1320,
+        "y": 240,
+        "wires": [
+            [
+                "e9a285525e788f1d"
+            ]
+        ]
+    },
+    {
+        "id": "133b7b5327a62e44",
+        "type": "change",
+        "z": "24795196996c71c6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.feeds[0].field8",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1280,
+        "y": 340,
+        "wires": [
+            [
+                "921bc309d43dd57c"
+            ]
+        ]
+    },
+    {
+        "id": "63d9a299fb02dd53",
+        "type": "http request",
+        "z": "24795196996c71c6",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/channels/2371399/feeds.json?api_key=MYC796JMT0ZR6W4L&results=1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 220,
+        "wires": [
+            [
+                "e6a2c32e2cb0f6ab"
             ]
         ]
     },
@@ -1131,16 +1965,20 @@
         "allowHTML": false,
         "outputs": 1,
         "topic": "",
-        "x": 480,
-        "y": 120,
+        "x": 580,
+        "y": 500,
         "wires": [
-            []
+            [
+                "70ede378f6f3b978",
+                "41604180f150e57b"
+            ]
         ]
     },
     {
         "id": "a938ddf8ce85deab",
         "type": "inject",
         "z": "37b937f18a9b9403",
+        "d": true,
         "name": "data",
         "props": [
             {
@@ -1158,11 +1996,11 @@
         "topic": "",
         "payload": "[\"123\",\"456\"]",
         "payloadType": "json",
-        "x": 110,
-        "y": 120,
+        "x": 130,
+        "y": 180,
         "wires": [
             [
-                "fc0c60b09610a81f"
+                "26d3a3b91c9ba89d"
             ]
         ]
     },
@@ -1178,12 +2016,296 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 280,
-        "y": 120,
+        "x": 380,
+        "y": 500,
         "wires": [
             [
                 "69f5881b383eb023"
             ]
+        ]
+    },
+    {
+        "id": "26d3a3b91c9ba89d",
+        "type": "http request",
+        "z": "37b937f18a9b9403",
+        "d": true,
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/update?api_key=8MQ6OOBCODPX2I0Z&field4={{payload}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c6d2cdf91128a39d",
+        "type": "http request",
+        "z": "37b937f18a9b9403",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/channels/2371399/fields/4/last.json?api_key=MYC796JMT0ZR6W4L&results=1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 400,
+        "wires": [
+            [
+                "d99048c0afe19012"
+            ]
+        ]
+    },
+    {
+        "id": "d99048c0afe19012",
+        "type": "json",
+        "z": "37b937f18a9b9403",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 470,
+        "y": 400,
+        "wires": [
+            [
+                "7e51cbba013d26fc"
+            ]
+        ]
+    },
+    {
+        "id": "e0db8cf93a7a96ee",
+        "type": "inject",
+        "z": "37b937f18a9b9403",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 400,
+        "wires": [
+            [
+                "c6d2cdf91128a39d"
+            ]
+        ]
+    },
+    {
+        "id": "7e51cbba013d26fc",
+        "type": "function",
+        "z": "37b937f18a9b9403",
+        "name": "convert to array",
+        "func": "msg.payload = msg.payload.field4.split(',')\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 500,
+        "wires": [
+            [
+                "fc0c60b09610a81f",
+                "49cdb41276e1afbf"
+            ]
+        ]
+    },
+    {
+        "id": "4a1f0df62171cb64",
+        "type": "function",
+        "z": "37b937f18a9b9403",
+        "name": "remove from arr",
+        "func": "const info = msg.payload.feeds[0]\nconst {created_at, entry_id, ...fields} = info\n\nconst uids = flow.get('uids').filter(item => item !== flow.get('selectedUid'))\n\nmsg.payload = { \n    \"api_key\": \"8MQ6OOBCODPX2I0Z\",\n    ...fields,\n    \"field4\": uids.join(',')\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 680,
+        "wires": [
+            [
+                "34fd68572abde45f"
+            ]
+        ]
+    },
+    {
+        "id": "49cdb41276e1afbf",
+        "type": "change",
+        "z": "37b937f18a9b9403",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "uids",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "70ede378f6f3b978",
+        "type": "http request",
+        "z": "37b937f18a9b9403",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/channels/2371399/feeds.json?api_key=MYC796JMT0ZR6W4L&results=1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 250,
+        "y": 680,
+        "wires": [
+            [
+                "e4c560e05531630f"
+            ]
+        ]
+    },
+    {
+        "id": "e4c560e05531630f",
+        "type": "json",
+        "z": "37b937f18a9b9403",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 390,
+        "y": 680,
+        "wires": [
+            [
+                "4a1f0df62171cb64"
+            ]
+        ]
+    },
+    {
+        "id": "4254015e0ea557dd",
+        "type": "change",
+        "z": "37b937f18a9b9403",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "uids",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "selectedUid",
+                "pt": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 680,
+        "wires": [
+            [
+                "c6d2cdf91128a39d"
+            ]
+        ]
+    },
+    {
+        "id": "34fd68572abde45f",
+        "type": "http request",
+        "z": "37b937f18a9b9403",
+        "name": "update cards",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "https://api.thingspeak.com/update.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 750,
+        "y": 680,
+        "wires": [
+            [
+                "4254015e0ea557dd"
+            ]
+        ]
+    },
+    {
+        "id": "41604180f150e57b",
+        "type": "change",
+        "z": "37b937f18a9b9403",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "selectedUid",
+                "pt": "flow",
+                "to": "payload.title",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 500,
+        "wires": [
+            []
         ]
     },
     {
@@ -1236,7 +2358,6 @@
         "wires": [
             [
                 "03202adc2609059c",
-                "12fea1876b81f1e5",
                 "c94bc51f35a80a7d"
             ]
         ]
@@ -1250,7 +2371,7 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "Incorrect input in {{msg.payload}} times",
+        "label": "Incorrect input in {{msg.payload.feeds[0].field5}} times",
         "format": "",
         "layout": "row-spread",
         "className": "",
@@ -1258,38 +2379,9 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 270,
+        "x": 410,
         "y": 280,
         "wires": []
-    },
-    {
-        "id": "3903b0ce921acd48",
-        "type": "inject",
-        "z": "fc4bc3d95db93427",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "5",
-        "payloadType": "num",
-        "x": 130,
-        "y": 280,
-        "wires": [
-            [
-                "1a26611f652c65ba"
-            ]
-        ]
     },
     {
         "id": "0e6a32a0de09632c",
@@ -1300,7 +2392,7 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "will lock in {{msg.payload}} seconds",
+        "label": "will lock in {{msg.payload.feeds[0].field6}} seconds",
         "format": "",
         "layout": "row-spread",
         "className": "",
@@ -1308,38 +2400,9 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 270,
+        "x": 410,
         "y": 340,
         "wires": []
-    },
-    {
-        "id": "2e1fa4f88d2f55f1",
-        "type": "inject",
-        "z": "fc4bc3d95db93427",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "5",
-        "payloadType": "num",
-        "x": 130,
-        "y": 340,
-        "wires": [
-            [
-                "0e6a32a0de09632c"
-            ]
-        ]
     },
     {
         "id": "40726f4453fc7c64",
@@ -1350,7 +2413,7 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "and alarm will sound within {{msg.payload}} seconds",
+        "label": "and alarm will sound within {{msg.payload.feeds[0].field7}} seconds",
         "format": "",
         "layout": "row-spread",
         "className": "",
@@ -1358,38 +2421,9 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 270,
+        "x": 410,
         "y": 400,
         "wires": []
-    },
-    {
-        "id": "3254ca97a105271c",
-        "type": "inject",
-        "z": "fc4bc3d95db93427",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "5",
-        "payloadType": "num",
-        "x": 130,
-        "y": 400,
-        "wires": [
-            [
-                "40726f4453fc7c64"
-            ]
-        ]
     },
     {
         "id": "f337e4c9ad53c2f3",
@@ -1527,16 +2561,6 @@
         ]
     },
     {
-        "id": "aabd957c4e4e2696",
-        "type": "comment",
-        "z": "fc4bc3d95db93427",
-        "name": "handle submit",
-        "info": "",
-        "x": 510,
-        "y": 780,
-        "wires": []
-    },
-    {
         "id": "3acddf9bf5b56cd6",
         "type": "ui_toast",
         "z": "fc4bc3d95db93427",
@@ -1551,8 +2575,8 @@
         "className": "",
         "topic": "",
         "name": "",
-        "x": 770,
-        "y": 840,
+        "x": 750,
+        "y": 1080,
         "wires": []
     },
     {
@@ -1574,29 +2598,13 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 570,
-        "y": 840,
+        "x": 550,
+        "y": 1080,
         "wires": [
             [
                 "3acddf9bf5b56cd6"
             ]
         ]
-    },
-    {
-        "id": "12fea1876b81f1e5",
-        "type": "debug",
-        "z": "fc4bc3d95db93427",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 260,
-        "y": 800,
-        "wires": []
     },
     {
         "id": "69d848291e2188ad",
@@ -1613,11 +2621,11 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 490,
-        "y": 720,
+        "x": 90,
+        "y": 840,
         "wires": [
             [
-                "10401aa63b8dbb95"
+                "45e2da8beb6dfb08"
             ]
         ]
     },
@@ -1638,6 +2646,210 @@
         "wires": [
             [
                 "69d848291e2188ad"
+            ]
+        ]
+    },
+    {
+        "id": "0d0e424a66b15939",
+        "type": "http request",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/channels/2371399/feeds.json?api_key=MYC796JMT0ZR6W4L&results=1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 270,
+        "y": 200,
+        "wires": [
+            [
+                "a28f5a6ffd5015b3"
+            ]
+        ]
+    },
+    {
+        "id": "a28f5a6ffd5015b3",
+        "type": "json",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "1a26611f652c65ba",
+                "0e6a32a0de09632c",
+                "40726f4453fc7c64"
+            ]
+        ]
+    },
+    {
+        "id": "d127753adf5eaa5c",
+        "type": "inject",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 200,
+        "wires": [
+            [
+                "0d0e424a66b15939"
+            ]
+        ]
+    },
+    {
+        "id": "50ab9c4d9b16d4cc",
+        "type": "http request",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/channels/2371399/feeds.json?api_key=MYC796JMT0ZR6W4L&results=1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 290,
+        "y": 960,
+        "wires": [
+            [
+                "97b86ae06249722c"
+            ]
+        ]
+    },
+    {
+        "id": "6a3387f14aa618c7",
+        "type": "function",
+        "z": "fc4bc3d95db93427",
+        "name": "get lastest info",
+        "func": "const info = msg.payload.feeds[0]\nconst {created_at, entry_id, ...fields} = info\n\nmsg.payload = { \n    \"api_key\": \"8MQ6OOBCODPX2I0Z\",\n    ...fields,\n    \"field5\": flow.get('timesIncorrect'),\n    \"field6\": flow.get('lockTime'),\n    \"field7\": flow.get('soundTime'),\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 960,
+        "wires": [
+            [
+                "22926f813f350695"
+            ]
+        ]
+    },
+    {
+        "id": "97b86ae06249722c",
+        "type": "json",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 430,
+        "y": 960,
+        "wires": [
+            [
+                "6a3387f14aa618c7"
+            ]
+        ]
+    },
+    {
+        "id": "22926f813f350695",
+        "type": "http request",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "https://api.thingspeak.com/update.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 750,
+        "y": 960,
+        "wires": [
+            [
+                "0d0e424a66b15939",
+                "10401aa63b8dbb95"
+            ]
+        ]
+    },
+    {
+        "id": "45e2da8beb6dfb08",
+        "type": "change",
+        "z": "fc4bc3d95db93427",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timesIncorrect",
+                "pt": "flow",
+                "to": "payload.timesIncorrect",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "lockTime",
+                "pt": "flow",
+                "to": "payload.lockTime",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "soundTime",
+                "pt": "flow",
+                "to": "payload.soundTime",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 120,
+        "y": 960,
+        "wires": [
+            [
+                "50ab9c4d9b16d4cc"
             ]
         ]
     }
