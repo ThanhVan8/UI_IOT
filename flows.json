@@ -53,7 +53,7 @@
         "name": "Default",
         "tab": "a98f1f5134af0f79",
         "order": 1,
-        "disp": true,
+        "disp": false,
         "width": "6",
         "collapse": false,
         "className": ""
@@ -61,7 +61,7 @@
     {
         "id": "a98f1f5134af0f79",
         "type": "ui_tab",
-        "name": "Login",
+        "name": "Đăng nhập",
         "icon": " fa-sign-in",
         "order": 1,
         "disabled": false,
@@ -167,7 +167,7 @@
     {
         "id": "2c45c42f4405f6b9",
         "type": "ui_tab",
-        "name": "Home",
+        "name": "Trang chủ",
         "icon": "dashboard",
         "order": 2,
         "disabled": false,
@@ -176,29 +176,29 @@
     {
         "id": "58ed85dc7f362a7e",
         "type": "ui_group",
-        "name": "History",
+        "name": "Lịch sử mở cửa",
         "tab": "2c45c42f4405f6b9",
         "order": 1,
         "disp": true,
-        "width": "20",
+        "width": "8",
         "collapse": false,
         "className": ""
     },
     {
         "id": "d61508040186c2be",
         "type": "ui_group",
-        "name": "Request",
+        "name": "Yêu cầu mở cửa từ xa",
         "tab": "2c45c42f4405f6b9",
         "order": 2,
         "disp": true,
-        "width": "6",
+        "width": "8",
         "collapse": false,
         "className": ""
     },
     {
         "id": "0da7ee0a093dd653",
         "type": "ui_tab",
-        "name": "Setting",
+        "name": "Cài đặt",
         "icon": "fa-cog",
         "order": 3,
         "disabled": false,
@@ -207,44 +207,44 @@
     {
         "id": "59d8d615e4bc3ea8",
         "type": "ui_group",
-        "name": "Password-key",
+        "name": "Mật khẩu cửa",
         "tab": "0da7ee0a093dd653",
         "order": 1,
         "disp": true,
-        "width": "20",
+        "width": "8",
         "collapse": false,
         "className": ""
     },
     {
         "id": "3c203151a5c185da",
         "type": "ui_group",
-        "name": "Password-admin",
+        "name": "Mật khẩu admin",
         "tab": "0da7ee0a093dd653",
         "order": 2,
-        "disp": false,
-        "width": "20",
+        "disp": true,
+        "width": "8",
         "collapse": false,
         "className": ""
     },
     {
         "id": "0c641f7d8cb07766",
         "type": "ui_group",
-        "name": "Cards",
+        "name": "Danh sách thẻ",
         "tab": "0da7ee0a093dd653",
         "order": 4,
         "disp": true,
-        "width": "20",
+        "width": "8",
         "collapse": false,
         "className": ""
     },
     {
         "id": "30d70e2f569b0487",
         "type": "ui_group",
-        "name": "Others",
+        "name": "Cài đặt khác",
         "tab": "0da7ee0a093dd653",
         "order": 5,
         "disp": true,
-        "width": "10",
+        "width": "8",
         "collapse": false,
         "className": ""
     },
@@ -255,7 +255,7 @@
         "tab": "0da7ee0a093dd653",
         "order": 6,
         "disp": false,
-        "width": "6",
+        "width": "8",
         "collapse": false,
         "className": ""
     },
@@ -263,13 +263,13 @@
         "id": "0ebf5054103628db",
         "type": "mqtt-broker",
         "name": "",
-        "broker": "broker.hivemq.com",
+        "broker": "test.mosquitto.org",
         "port": "1883",
         "clientid": "",
         "autoConnect": true,
         "usetls": false,
         "protocolVersion": "4",
-        "keepalive": "30",
+        "keepalive": "60",
         "cleansession": true,
         "autoUnsubscribe": true,
         "birthTopic": "",
@@ -296,8 +296,8 @@
         "z": "b0aafce809c04ac4",
         "name": "",
         "events": "all",
-        "x": 880,
-        "y": 280,
+        "x": 1260,
+        "y": 320,
         "wires": [
             []
         ]
@@ -306,13 +306,13 @@
         "id": "7072f6a8ae7eb2c1",
         "type": "change",
         "z": "b0aafce809c04ac4",
-        "name": "show other tabs",
+        "name": "hiện các tab khác",
         "rules": [
             {
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"tabs\":{\"hide\":[\"Login\"],\"show\":[\"Home\",\"Setting\"]},\"tab\":\"Home\"}",
+                "to": "{\"tabs\":{\"hide\":[\"Đăng nhập\"],\"show\":[\"Trang chủ\",\"Cài đặt\"]},\"tab\":\"Trang chủ\"}",
                 "tot": "json"
             }
         ],
@@ -321,8 +321,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 660,
-        "y": 280,
+        "x": 1090,
+        "y": 320,
         "wires": [
             [
                 "5d42e9f70e1ccd68"
@@ -347,8 +347,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 430,
-        "y": 320,
+        "x": 910,
+        "y": 340,
         "wires": [
             [
                 "7072f6a8ae7eb2c1",
@@ -373,8 +373,8 @@
         "raw": false,
         "className": "",
         "topic": "",
-        "name": "fail",
-        "x": 630,
+        "name": "thông báo thất bại",
+        "x": 1090,
         "y": 360,
         "wires": []
     },
@@ -382,7 +382,7 @@
         "id": "d59e2d7cfae3167f",
         "type": "function",
         "z": "b0aafce809c04ac4",
-        "name": "checkValid",
+        "name": "xác thực tài khoản",
         "func": "if (msg.payload.email == flow.get('email') && msg.payload.password == flow.get('password')) {\n    msg.payload = true;\n}\nelse if (msg.payload.email != flow.get('email')) {\n    msg.payload = \"Sai email\";\n}\nelse {\n    msg.payload = \"Sai mật khẩu\";\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -390,8 +390,8 @@
         "initialize": "",
         "finalize": "// Code added here will be run when the\n// node is being stopped or re-deployed.\nmsg.payload[\"tab\"] = \"Home\";\nreturn msg;",
         "libs": [],
-        "x": 250,
-        "y": 320,
+        "x": 750,
+        "y": 340,
         "wires": [
             [
                 "c49100a321517142"
@@ -403,7 +403,7 @@
         "type": "ui_form",
         "z": "b0aafce809c04ac4",
         "name": "",
-        "label": "Login",
+        "label": "Đăng nhập",
         "group": "8784652f4df53f52",
         "order": 4,
         "width": 0,
@@ -417,7 +417,7 @@
                 "rows": null
             },
             {
-                "label": "Password",
+                "label": "Mật khẩu",
                 "value": "password",
                 "type": "password",
                 "required": true,
@@ -429,14 +429,14 @@
             "password": ""
         },
         "payload": "",
-        "submit": "LOGIN",
+        "submit": "ĐĂNG NHẬP",
         "cancel": "",
         "topic": "topic",
         "topicType": "msg",
         "splitLayout": "",
         "className": "",
-        "x": 90,
-        "y": 320,
+        "x": 570,
+        "y": 340,
         "wires": [
             [
                 "d59e2d7cfae3167f"
@@ -447,24 +447,14 @@
         "id": "8fd5c326cbd95841",
         "type": "change",
         "z": "b0aafce809c04ac4",
-        "name": "set noti success",
+        "name": "đặt nội dung thông báo",
         "rules": [
             {
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "\"Đăng nhập thành công\"",
+                "to": "Đăng nhập thành công",
                 "tot": "str"
-            },
-            {
-                "t": "delete",
-                "p": "email",
-                "pt": "flow"
-            },
-            {
-                "t": "delete",
-                "p": "password",
-                "pt": "flow"
             }
         ],
         "action": "",
@@ -472,8 +462,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 660,
-        "y": 200,
+        "x": 1100,
+        "y": 280,
         "wires": [
             [
                 "e3bfc7b3497901d7"
@@ -494,9 +484,9 @@
         "raw": false,
         "className": "",
         "topic": "",
-        "name": "success",
-        "x": 860,
-        "y": 200,
+        "name": "thông báo thành công",
+        "x": 1320,
+        "y": 280,
         "wires": []
     },
     {
@@ -515,8 +505,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 310,
-        "y": 120,
+        "x": 290,
+        "y": 240,
         "wires": [
             [
                 "4acbbc822d3822b0"
@@ -531,70 +521,12 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 470,
-        "y": 120,
+        "x": 430,
+        "y": 240,
         "wires": [
             [
                 "07defcf0334bc2d0"
             ]
-        ]
-    },
-    {
-        "id": "7e185b82792d91bd",
-        "type": "inject",
-        "z": "b0aafce809c04ac4",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 100,
-        "y": 60,
-        "wires": [
-            [
-                "c66319bf751c0d08"
-            ]
-        ]
-    },
-    {
-        "id": "1a283ed1e7940268",
-        "type": "http request",
-        "z": "b0aafce809c04ac4",
-        "name": "",
-        "method": "POST",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "https://api.thingspeak.com/update.json",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [
-            {
-                "keyType": "other",
-                "keyValue": "Content-Type",
-                "valueType": "other",
-                "valueValue": "application/json"
-            }
-        ],
-        "x": 490,
-        "y": 60,
-        "wires": [
-            []
         ]
     },
     {
@@ -611,15 +543,15 @@
                 "vt": "str"
             }
         ],
-        "repeat": "",
+        "repeat": "5",
         "crontab": "",
         "once": true,
         "onceDelay": "0",
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 110,
-        "y": 120,
+        "x": 130,
+        "y": 240,
         "wires": [
             [
                 "808f41a1f76ef687"
@@ -630,7 +562,7 @@
         "id": "07defcf0334bc2d0",
         "type": "change",
         "z": "b0aafce809c04ac4",
-        "name": "get acc from cloud",
+        "name": "lấy tài khoản",
         "rules": [
             {
                 "t": "set",
@@ -652,8 +584,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 690,
-        "y": 120,
+        "x": 570,
+        "y": 240,
         "wires": [
             [
                 "77c53a0b2c67e3e3"
@@ -661,16 +593,16 @@
         ]
     },
     {
-        "id": "c66319bf751c0d08",
+        "id": "51d46e9b06601697",
         "type": "change",
         "z": "b0aafce809c04ac4",
-        "name": "",
+        "name": "chỉ hiện trang đăng nhập",
         "rules": [
             {
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"api_key\":\"8MQ6OOBCODPX2I0Z\",\"field1\":\"btv@gmail.com\",\"field2\":\"btv123\",\"field3\":\"123\",\"field4\":\"6391408,4a1f2bb,a415f5bb\",\"field5\":5,\"field6\":60,\"field7\":10,\"field8\":\"888\"}",
+                "to": "{\"tabs\":{\"show\":[\"Đăng nhập\"],\"hide\":[\"Trang chủ\",\"Cài đặt\"]},\"tab\":\"Đăng nhập\"}",
                 "tot": "json"
             }
         ],
@@ -679,12 +611,53 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 280,
-        "y": 60,
+        "x": 330,
+        "y": 160,
         "wires": [
             [
-                "1a283ed1e7940268"
+                "5b51d9055064421f"
             ]
+        ]
+    },
+    {
+        "id": "cc439e1c861f7fff",
+        "type": "inject",
+        "z": "b0aafce809c04ac4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [
+                "51d46e9b06601697"
+            ]
+        ]
+    },
+    {
+        "id": "5b51d9055064421f",
+        "type": "ui_ui_control",
+        "z": "b0aafce809c04ac4",
+        "name": "",
+        "events": "all",
+        "x": 540,
+        "y": 160,
+        "wires": [
+            []
         ]
     },
     {
@@ -692,10 +665,10 @@
         "type": "ui_table",
         "z": "e6772d2f81a6e4c8",
         "group": "58ed85dc7f362a7e",
-        "name": "History",
+        "name": "Lịch sử mở cửa",
         "order": 0,
-        "width": "0",
-        "height": "0",
+        "width": "8",
+        "height": "5",
         "columns": [
             {
                 "field": "time",
@@ -740,7 +713,7 @@
         ],
         "outputs": 0,
         "cts": false,
-        "x": 780,
+        "x": 880,
         "y": 120,
         "wires": []
     },
@@ -758,7 +731,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "3",
+        "repeat": "5",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
@@ -814,73 +787,10 @@
         ]
     },
     {
-        "id": "604948046f0e1eb8",
-        "type": "inject",
-        "z": "e6772d2f81a6e4c8",
-        "d": true,
-        "name": "",
-        "props": [
-            {
-                "p": "payload.method",
-                "v": "thẻ",
-                "vt": "str"
-            },
-            {
-                "p": "payload.status",
-                "v": "false",
-                "vt": "bool"
-            },
-            {
-                "p": "payload.uid",
-                "v": "",
-                "vt": "str"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 110,
-        "y": 40,
-        "wires": [
-            [
-                "d735940cc1e0e1fb"
-            ]
-        ]
-    },
-    {
-        "id": "d735940cc1e0e1fb",
-        "type": "http request",
-        "z": "e6772d2f81a6e4c8",
-        "d": true,
-        "name": "",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "https://api.thingspeak.com/update?api_key=CZ3WNOQBX0A6SUA8&field1={{payload.method}}&field2={{payload.status}}&field3={{payload.uid}}",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 270,
-        "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "f02daaefea9652f0",
         "type": "function",
         "z": "e6772d2f81a6e4c8",
-        "name": "push to array",
+        "name": "thêm vào mảng lịch sử",
         "func": "var history = []\nmsg.payload.feeds.forEach(function(feed) {\n    history.push({\n        \"time\": new Date(feed[\"created_at\"]).toLocaleString('en-US'),\n        \"method\": feed.field1,\n        \"status\": feed.field2,\n        \"uid\": feed.field3\n    })\n});\nmsg.payload = history;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -888,34 +798,13 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 630,
+        "x": 660,
         "y": 120,
         "wires": [
             [
                 "118e1411f51e5e1b"
             ]
         ]
-    },
-    {
-        "id": "d02b3d978bbb733d",
-        "type": "ui_text",
-        "z": "3fc6adadafdd20e0",
-        "group": "d61508040186c2be",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Open door remote",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 170,
-        "y": 320,
-        "wires": []
     },
     {
         "id": "31d2f9bf08698523",
@@ -927,7 +816,7 @@
         "width": "2",
         "height": "1",
         "passthru": false,
-        "label": "Open",
+        "label": "Mở cửa",
         "tooltip": "",
         "color": "",
         "bgcolor": "green",
@@ -937,191 +826,11 @@
         "payloadType": "bool",
         "topic": "topic",
         "topicType": "msg",
-        "x": 150,
-        "y": 380,
+        "x": 180,
+        "y": 100,
         "wires": [
             [
                 "cc1aa70841475fe2"
-            ]
-        ]
-    },
-    {
-        "id": "fb3b7a227c989217",
-        "type": "inject",
-        "z": "3fc6adadafdd20e0",
-        "d": true,
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "true",
-        "payloadType": "bool",
-        "x": 290,
-        "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f63eb7c18a3fee23",
-        "type": "ui_ui_control",
-        "z": "3fc6adadafdd20e0",
-        "d": true,
-        "name": "",
-        "events": "all",
-        "x": 680,
-        "y": 180,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "fd8d64f76ccd56ab",
-        "type": "change",
-        "z": "3fc6adadafdd20e0",
-        "d": true,
-        "name": "show request",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "{\"group\":{\"show\":[\"Home_Request\"]}}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 490,
-        "y": 140,
-        "wires": [
-            [
-                "f63eb7c18a3fee23"
-            ]
-        ]
-    },
-    {
-        "id": "d9bf301456fb2970",
-        "type": "switch",
-        "z": "3fc6adadafdd20e0",
-        "d": true,
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 310,
-        "y": 180,
-        "wires": [
-            [
-                "fd8d64f76ccd56ab"
-            ],
-            [
-                "4a204515ab3a4de9"
-            ]
-        ]
-    },
-    {
-        "id": "4a204515ab3a4de9",
-        "type": "change",
-        "z": "3fc6adadafdd20e0",
-        "d": true,
-        "name": "hide request",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "{\"group\":{\"hide\":[\"Home_Request\"]}}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 490,
-        "y": 220,
-        "wires": [
-            [
-                "f63eb7c18a3fee23"
-            ]
-        ]
-    },
-    {
-        "id": "4b37f763e8c03ab6",
-        "type": "inject",
-        "z": "3fc6adadafdd20e0",
-        "d": true,
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "false",
-        "payloadType": "bool",
-        "x": 290,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "efc323a7f5c6e7af",
-        "type": "mqtt in",
-        "z": "3fc6adadafdd20e0",
-        "d": true,
-        "name": "",
-        "topic": "08/open-request",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "0ebf5054103628db",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 120,
-        "y": 180,
-        "wires": [
-            [
-                "d9bf301456fb2970",
-                "c0c1799738331fcd"
             ]
         ]
     },
@@ -1140,64 +849,8 @@
         "expiry": "",
         "broker": "0ebf5054103628db",
         "x": 390,
-        "y": 380,
+        "y": 100,
         "wires": []
-    },
-    {
-        "id": "c0c1799738331fcd",
-        "type": "debug",
-        "z": "3fc6adadafdd20e0",
-        "d": true,
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 240,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "9d8ae24704817fed",
-        "type": "comment",
-        "z": "3fc6adadafdd20e0",
-        "name": "",
-        "info": "handle xong -> từ mạch publish lên topic open-request là 0 để ẩn request",
-        "x": 620,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "b8ea94f66aae1f96",
-        "type": "switch",
-        "z": "7c273bcac53a9567",
-        "name": "",
-        "property": "payload.feeds[0].field3",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "null"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 950,
-        "y": 200,
-        "wires": [
-            [
-                "94e30e1930f57e3a"
-            ],
-            [
-                "2e1eb960c21154f6"
-            ]
-        ]
     },
     {
         "id": "2bad3cea4e7bb353",
@@ -1208,7 +861,7 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "Current key-password: ",
+        "label": "Mật khẩu cửa hiện tại: ",
         "format": "{{msg.payload}}",
         "layout": "row-left",
         "className": "",
@@ -1216,62 +869,9 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 1420,
-        "y": 140,
+        "x": 820,
+        "y": 180,
         "wires": []
-    },
-    {
-        "id": "b138b1cac4b47a3b",
-        "type": "ui_text_input",
-        "z": "7c273bcac53a9567",
-        "name": "",
-        "label": "New key-password",
-        "tooltip": "",
-        "group": "59d8d615e4bc3ea8",
-        "order": 2,
-        "width": "5",
-        "height": "1",
-        "passthru": true,
-        "mode": "password",
-        "delay": "0",
-        "topic": "topic",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 150,
-        "y": 380,
-        "wires": [
-            [
-                "fcd396b561f76d13"
-            ]
-        ]
-    },
-    {
-        "id": "94e30e1930f57e3a",
-        "type": "change",
-        "z": "7c273bcac53a9567",
-        "name": "set noti",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "Not have password yet",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1140,
-        "y": 100,
-        "wires": [
-            [
-                "2bad3cea4e7bb353"
-            ]
-        ]
     },
     {
         "id": "c1d0e247174c5b2c",
@@ -1294,7 +894,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 110,
+        "x": 150,
         "y": 220,
         "wires": [
             [
@@ -1310,217 +910,11 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 490,
+        "x": 450,
         "y": 220,
         "wires": [
             [
-                "4cfe580d9430e9d0"
-            ]
-        ]
-    },
-    {
-        "id": "4cfe580d9430e9d0",
-        "type": "switch",
-        "z": "7c273bcac53a9567",
-        "name": "check if not have data",
-        "property": "payload.feeds",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "empty"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 680,
-        "y": 220,
-        "wires": [
-            [
-                "94e30e1930f57e3a",
-                "5a486f0f749207b1"
-            ],
-            [
-                "b8ea94f66aae1f96",
-                "74817c86816631a3"
-            ]
-        ]
-    },
-    {
-        "id": "d99a9d7e38412741",
-        "type": "ui_button",
-        "z": "7c273bcac53a9567",
-        "name": "",
-        "group": "59d8d615e4bc3ea8",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Change",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "newPassword",
-        "payloadType": "flow",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 540,
-        "y": 380,
-        "wires": [
-            [
-                "d476b4b9c72af8bc"
-            ]
-        ]
-    },
-    {
-        "id": "fcd396b561f76d13",
-        "type": "change",
-        "z": "7c273bcac53a9567",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "newPassword",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 360,
-        "y": 380,
-        "wires": [
-            [
-                "d99a9d7e38412741"
-            ]
-        ]
-    },
-    {
-        "id": "3848ccf73b1f07d6",
-        "type": "function",
-        "z": "7c273bcac53a9567",
-        "name": "get lastest info",
-        "func": "const info = msg.payload.feeds[0]\nconst {created_at, entry_id, ...fields} = info\n\nmsg.payload = { \n    \"api_key\": \"8MQ6OOBCODPX2I0Z\",\n    ...fields,\n    \"field3\": flow.get('newPassword')\n}\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 480,
-        "wires": [
-            [
-                "7e120234057f44c4"
-            ]
-        ]
-    },
-    {
-        "id": "d476b4b9c72af8bc",
-        "type": "http request",
-        "z": "7c273bcac53a9567",
-        "name": "",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "https://api.thingspeak.com/channels/2371399/feeds.json?api_key=MYC796JMT0ZR6W4L&results=1",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 170,
-        "y": 480,
-        "wires": [
-            [
-                "0f43a148524e8b63"
-            ]
-        ]
-    },
-    {
-        "id": "7e120234057f44c4",
-        "type": "http request",
-        "z": "7c273bcac53a9567",
-        "name": "",
-        "method": "POST",
-        "ret": "txt",
-        "paytoqs": "body",
-        "url": "https://api.thingspeak.com/update.json",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [
-            {
-                "keyType": "other",
-                "keyValue": "Content-Type",
-                "valueType": "other",
-                "valueValue": "application/json"
-            }
-        ],
-        "x": 790,
-        "y": 480,
-        "wires": [
-            [
-                "a79f4b7f551c09e5",
-                "ec8d4f5adb61620e"
-            ]
-        ]
-    },
-    {
-        "id": "0f43a148524e8b63",
-        "type": "json",
-        "z": "7c273bcac53a9567",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 330,
-        "y": 480,
-        "wires": [
-            [
-                "3848ccf73b1f07d6"
-            ]
-        ]
-    },
-    {
-        "id": "74817c86816631a3",
-        "type": "switch",
-        "z": "7c273bcac53a9567",
-        "name": "",
-        "property": "payload.feeds[0].field8",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "null"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 950,
-        "y": 300,
-        "wires": [
-            [
-                "5a486f0f749207b1"
-            ],
-            [
+                "2e1eb960c21154f6",
                 "2a83733deb1a192a"
             ]
         ]
@@ -1534,7 +928,7 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "Current admin-password: ",
+        "label": "Mật khẩu admin hiện tại: ",
         "format": "{{msg.payload}}",
         "layout": "row-left",
         "className": "",
@@ -1542,117 +936,9 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 1430,
-        "y": 280,
+        "x": 830,
+        "y": 260,
         "wires": []
-    },
-    {
-        "id": "5a486f0f749207b1",
-        "type": "change",
-        "z": "7c273bcac53a9567",
-        "name": "set noti",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "Not have password yet",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1120,
-        "y": 280,
-        "wires": [
-            [
-                "60e81e3532d91d26"
-            ]
-        ]
-    },
-    {
-        "id": "2fc391cddee741a0",
-        "type": "ui_text_input",
-        "z": "7c273bcac53a9567",
-        "name": "",
-        "label": "New admin-password",
-        "tooltip": "",
-        "group": "3c203151a5c185da",
-        "order": 2,
-        "width": "5",
-        "height": "1",
-        "passthru": true,
-        "mode": "password",
-        "delay": "0",
-        "topic": "topic",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 160,
-        "y": 640,
-        "wires": [
-            [
-                "c48ec03666372faf"
-            ]
-        ]
-    },
-    {
-        "id": "54fd09b30f8fd2d3",
-        "type": "ui_button",
-        "z": "7c273bcac53a9567",
-        "name": "",
-        "group": "3c203151a5c185da",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Change",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "newAdminPassword",
-        "payloadType": "flow",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 640,
-        "y": 640,
-        "wires": [
-            [
-                "26c13c375ae1a7c9"
-            ]
-        ]
-    },
-    {
-        "id": "c48ec03666372faf",
-        "type": "change",
-        "z": "7c273bcac53a9567",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "newAdminPassword",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 420,
-        "y": 640,
-        "wires": [
-            [
-                "54fd09b30f8fd2d3"
-            ]
-        ]
     },
     {
         "id": "2e1eb960c21154f6",
@@ -1673,8 +959,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1140,
-        "y": 200,
+        "x": 620,
+        "y": 180,
         "wires": [
             [
                 "2bad3cea4e7bb353"
@@ -1700,8 +986,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1120,
-        "y": 320,
+        "x": 620,
+        "y": 260,
         "wires": [
             [
                 "60e81e3532d91d26"
@@ -1747,7 +1033,7 @@
         "className": "",
         "topic": "",
         "name": "",
-        "x": 1250,
+        "x": 1450,
         "y": 500,
         "wires": []
     },
@@ -1761,7 +1047,14 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "Change password successfully",
+                "to": "Thay đổi thành công",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "",
                 "tot": "str"
             }
         ],
@@ -1770,7 +1063,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1030,
+        "x": 1250,
         "y": 500,
         "wires": [
             [
@@ -1782,7 +1075,7 @@
         "id": "49caa951def1d56b",
         "type": "function",
         "z": "7c273bcac53a9567",
-        "name": "get lastest info",
+        "name": "xử lý dữ liệu gửi đi",
         "func": "const info = msg.payload.feeds[0]\nconst {created_at, entry_id, ...fields} = info\n\nmsg.payload = { \n    \"api_key\": \"8MQ6OOBCODPX2I0Z\",\n    ...fields,\n    \"field8\": flow.get('newAdminPassword')\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -1790,8 +1083,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
-        "y": 540,
+        "x": 870,
+        "y": 460,
         "wires": [
             [
                 "b0b761a9daa2caf9"
@@ -1821,8 +1114,8 @@
                 "valueValue": "application/json"
             }
         ],
-        "x": 790,
-        "y": 540,
+        "x": 1050,
+        "y": 460,
         "wires": [
             [
                 "a79f4b7f551c09e5",
@@ -1846,8 +1139,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 170,
-        "y": 540,
+        "x": 570,
+        "y": 460,
         "wires": [
             [
                 "ade5ee8e471a96a9"
@@ -1862,8 +1155,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 330,
-        "y": 540,
+        "x": 710,
+        "y": 460,
         "wires": [
             [
                 "49caa951def1d56b"
@@ -1884,36 +1177,9 @@
         "correl": "",
         "expiry": "",
         "broker": "0ebf5054103628db",
-        "x": 1220,
-        "y": 420,
+        "x": 500,
+        "y": 360,
         "wires": []
-    },
-    {
-        "id": "ec8d4f5adb61620e",
-        "type": "change",
-        "z": "7c273bcac53a9567",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "newPassword",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1000,
-        "y": 440,
-        "wires": [
-            [
-                "89fb8374654f23c5"
-            ]
-        ]
     },
     {
         "id": "0e6a181403025455",
@@ -1934,8 +1200,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1000,
-        "y": 580,
+        "x": 1240,
+        "y": 440,
         "wires": [
             [
                 "d8aedb4de804d363"
@@ -1956,9 +1222,276 @@
         "correl": "",
         "expiry": "",
         "broker": "0ebf5054103628db",
-        "x": 1220,
-        "y": 600,
+        "x": 1440,
+        "y": 440,
         "wires": []
+    },
+    {
+        "id": "71759ed521e52756",
+        "type": "mqtt in",
+        "z": "7c273bcac53a9567",
+        "name": "",
+        "topic": "08_modify_door_pw",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "0ebf5054103628db",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 580,
+        "wires": [
+            [
+                "48f6dc6f41385949"
+            ]
+        ]
+    },
+    {
+        "id": "48f6dc6f41385949",
+        "type": "change",
+        "z": "7c273bcac53a9567",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "newPassword",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 580,
+        "wires": [
+            [
+                "b72baa63c33386be"
+            ]
+        ]
+    },
+    {
+        "id": "b72baa63c33386be",
+        "type": "http request",
+        "z": "7c273bcac53a9567",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/channels/2371399/feeds.json?api_key=MYC796JMT0ZR6W4L&results=1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 570,
+        "y": 580,
+        "wires": [
+            [
+                "feb690b4a012a140"
+            ]
+        ]
+    },
+    {
+        "id": "feb690b4a012a140",
+        "type": "json",
+        "z": "7c273bcac53a9567",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 710,
+        "y": 580,
+        "wires": [
+            [
+                "864dff1e177f0c56"
+            ]
+        ]
+    },
+    {
+        "id": "864dff1e177f0c56",
+        "type": "function",
+        "z": "7c273bcac53a9567",
+        "name": "xử lý dữ liệu gửi đi",
+        "func": "const info = msg.payload.feeds[0]\nconst {created_at, entry_id, ...fields} = info\n\nmsg.payload = { \n    \"api_key\": \"8MQ6OOBCODPX2I0Z\",\n    ...fields,\n    \"field3\": flow.get('newPassword')\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 580,
+        "wires": [
+            [
+                "26960a3021a03a4f"
+            ]
+        ]
+    },
+    {
+        "id": "26960a3021a03a4f",
+        "type": "http request",
+        "z": "7c273bcac53a9567",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "https://api.thingspeak.com/update.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 1050,
+        "y": 580,
+        "wires": [
+            [
+                "a79f4b7f551c09e5"
+            ]
+        ]
+    },
+    {
+        "id": "d85f7d22480eaa24",
+        "type": "ui_form",
+        "z": "7c273bcac53a9567",
+        "name": "",
+        "label": "",
+        "group": "59d8d615e4bc3ea8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Mật khẩu cửa mới",
+                "value": "newPassword",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "newPassword": ""
+        },
+        "payload": "",
+        "submit": "Thay đổi",
+        "cancel": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 110,
+        "y": 360,
+        "wires": [
+            [
+                "a71f0c862b2f4e10"
+            ]
+        ]
+    },
+    {
+        "id": "a71f0c862b2f4e10",
+        "type": "change",
+        "z": "7c273bcac53a9567",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.newPassword",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 360,
+        "wires": [
+            [
+                "89fb8374654f23c5"
+            ]
+        ]
+    },
+    {
+        "id": "1110a9424db649b0",
+        "type": "ui_form",
+        "z": "7c273bcac53a9567",
+        "name": "",
+        "label": "",
+        "group": "3c203151a5c185da",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Mật khẩu admin mới",
+                "value": "newAdminPassword",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "newAdminPassword": ""
+        },
+        "payload": "",
+        "submit": "Thay đổi",
+        "cancel": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 110,
+        "y": 460,
+        "wires": [
+            [
+                "f9a6e8845017f562"
+            ]
+        ]
+    },
+    {
+        "id": "f9a6e8845017f562",
+        "type": "change",
+        "z": "7c273bcac53a9567",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "newAdminPassword",
+                "pt": "flow",
+                "to": "payload.newAdminPassword",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 460,
+        "wires": [
+            [
+                "26c13c375ae1a7c9"
+            ]
+        ]
     },
     {
         "id": "d1602e0921351033",
@@ -1974,8 +1507,8 @@
         "allowHTML": false,
         "outputs": 1,
         "topic": "",
-        "x": 580,
-        "y": 500,
+        "x": 1120,
+        "y": 400,
         "wires": [
             [
                 "a23cc330b227faab"
@@ -1986,16 +1519,16 @@
         "id": "986d62563e879dce",
         "type": "function",
         "z": "adcb572b0eab86bd",
-        "name": "convert to ui-list",
-        "func": "const cardObjs = []\nmsg.payload.forEach(function(uid) {\n    cardObjs.push({\"title\": uid, \"menu\": [\"Remove\"]})\n});\nmsg.payload = cardObjs\nreturn msg;",
+        "name": "chuyển định dạng cho node ui-list",
+        "func": "const cardObjs = []\nmsg.payload.forEach(function(uid) {\n    cardObjs.push({\"title\": uid, \"menu\": [\"Xóa\"]})\n});\nmsg.payload = cardObjs\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
-        "y": 500,
+        "x": 900,
+        "y": 400,
         "wires": [
             [
                 "d1602e0921351033"
@@ -2034,7 +1567,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 470,
+        "x": 450,
         "y": 400,
         "wires": [
             [
@@ -2056,7 +1589,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "5",
+        "repeat": "",
         "crontab": "",
         "once": true,
         "onceDelay": "0",
@@ -2075,7 +1608,7 @@
         "id": "24666de5a76e6bf2",
         "type": "function",
         "z": "adcb572b0eab86bd",
-        "name": "convert to array",
+        "name": "chuyển chuỗi thành mảng",
         "func": "msg.payload = msg.payload.field4.split(',')\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -2083,8 +1616,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 180,
-        "y": 500,
+        "x": 630,
+        "y": 400,
         "wires": [
             [
                 "986d62563e879dce"
@@ -2105,7 +1638,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 120,
-        "y": 700,
+        "y": 560,
         "wires": [
             [
                 "4aaaa90ff2719991",
@@ -2119,7 +1652,7 @@
         "z": "adcb572b0eab86bd",
         "name": "",
         "topic": "08_card_disable",
-        "qos": "2",
+        "qos": "",
         "retain": "",
         "respTopic": "",
         "contentType": "",
@@ -2127,8 +1660,8 @@
         "correl": "",
         "expiry": "",
         "broker": "0ebf5054103628db",
-        "x": 940,
-        "y": 500,
+        "x": 1480,
+        "y": 400,
         "wires": []
     },
     {
@@ -2150,11 +1683,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 740,
-        "y": 500,
+        "x": 1280,
+        "y": 400,
         "wires": [
             [
-                "0753ef1fdec67b7c"
+                "0753ef1fdec67b7c",
+                "645348692da9fe35"
             ]
         ]
     },
@@ -2172,12 +1706,11 @@
         "rh": 0,
         "inputs": 0,
         "x": 120,
-        "y": 820,
+        "y": 680,
         "wires": [
             [
                 "9d556e38d877863f",
-                "b6dd0440e120e002",
-                "de15c1a7ff4371b2"
+                "b6dd0440e120e002"
             ]
         ]
     },
@@ -2200,8 +1733,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
-        "y": 820,
+        "x": 380,
+        "y": 680,
         "wires": [
             [
                 "b191fed947819e5b"
@@ -2227,8 +1760,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 520,
-        "y": 700,
+        "x": 380,
+        "y": 600,
         "wires": [
             [
                 "115cb8603ab79bf3"
@@ -2239,7 +1772,7 @@
         "id": "115cb8603ab79bf3",
         "type": "function",
         "z": "adcb572b0eab86bd",
-        "name": "add to arr",
+        "name": "xử lý dữ liệu gửi đi",
         "func": "const info = msg.payload.feeds[0]\nconst {created_at, entry_id, ...fields} = info\n\nvar currentUids = msg.payload.feeds[0].field4\ncurrentUids = currentUids + \",\" + flow.get(\"selectedUid\")\n\nmsg.payload = { \n    \"api_key\": \"8MQ6OOBCODPX2I0Z\",\n    ...fields,\n    \"field4\": currentUids\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -2247,8 +1780,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 780,
-        "y": 640,
+        "x": 710,
+        "y": 540,
         "wires": [
             [
                 "8090d5ed38e27966"
@@ -2271,8 +1804,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 370,
-        "y": 640,
+        "x": 350,
+        "y": 540,
         "wires": [
             [
                 "08b390b02726487d"
@@ -2287,8 +1820,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 530,
-        "y": 640,
+        "x": 510,
+        "y": 540,
         "wires": [
             [
                 "115cb8603ab79bf3"
@@ -2299,20 +1832,19 @@
         "id": "b191fed947819e5b",
         "type": "function",
         "z": "adcb572b0eab86bd",
-        "name": "remove from arr",
-        "func": "const info = msg.payload.feeds[0]\nconst {created_at, entry_id, ...fields} = info\n\nvar currentUids = msg.payload.feeds[0].field4\ncurrentUids = currentUids.split(\",\")\ncurrentUids = currentUids.filter(item => item !== flow.get('selectedUid'))\n\nmsg.payload = { \n    \"api_key\": \"8MQ6OOBCODPX2I0Z\",\n    ...fields,\n    \"field4\": currentUids.join(',')\n}\n\nreturn msg;",
+        "name": "xử lý dữ liệu gửi đi",
+        "func": "const info = msg.payload.feeds[0]\nconst {created_at, entry_id, ...fields} = info\n\nvar currentUids = msg.payload.feeds[0].field4\ncurrentUids = currentUids.split(\",\")\ncurrentUids = currentUids.filter(item => item != flow.get('selectedUid'))\n\nmsg.payload = { \n    \"api_key\": \"8MQ6OOBCODPX2I0Z\",\n    ...fields,\n    \"field4\": currentUids.join(',')\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 700,
-        "y": 880,
+        "x": 710,
+        "y": 740,
         "wires": [
             [
-                "8090d5ed38e27966",
-                "d211cf3933d7e0a1"
+                "8090d5ed38e27966"
             ]
         ]
     },
@@ -2332,8 +1864,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 390,
-        "y": 880,
+        "x": 350,
+        "y": 740,
         "wires": [
             [
                 "ef7db0c982b0ec9b"
@@ -2348,12 +1880,11 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 530,
-        "y": 880,
+        "x": 490,
+        "y": 740,
         "wires": [
             [
-                "b191fed947819e5b",
-                "578f549a6eb2a86a"
+                "b191fed947819e5b"
             ]
         ]
     },
@@ -2361,7 +1892,7 @@
         "id": "8090d5ed38e27966",
         "type": "http request",
         "z": "adcb572b0eab86bd",
-        "name": "update cards",
+        "name": "",
         "method": "POST",
         "ret": "txt",
         "paytoqs": "body",
@@ -2381,58 +1912,12 @@
             }
         ],
         "x": 950,
-        "y": 780,
+        "y": 580,
         "wires": [
-            []
+            [
+                "645348692da9fe35"
+            ]
         ]
-    },
-    {
-        "id": "d211cf3933d7e0a1",
-        "type": "debug",
-        "z": "adcb572b0eab86bd",
-        "name": "debug 5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1040,
-        "y": 860,
-        "wires": []
-    },
-    {
-        "id": "de15c1a7ff4371b2",
-        "type": "debug",
-        "z": "adcb572b0eab86bd",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 240,
-        "y": 960,
-        "wires": []
-    },
-    {
-        "id": "578f549a6eb2a86a",
-        "type": "debug",
-        "z": "adcb572b0eab86bd",
-        "name": "debug 7",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 620,
-        "y": 960,
-        "wires": []
     },
     {
         "id": "fda1642038e40025",
@@ -2446,21 +1931,21 @@
         "height": 0,
         "options": [
             {
-                "label": "Incorrect input in (times)",
+                "label": "Số lần mở cửa sai",
                 "value": "timesIncorrect",
                 "type": "number",
                 "required": false,
                 "rows": null
             },
             {
-                "label": "Lock in (seconds)",
+                "label": "Thời gian khóa (giây)",
                 "value": "lockTime",
                 "type": "number",
                 "required": false,
                 "rows": null
             },
             {
-                "label": "Alarm sounds within (seconds)",
+                "label": "Thời gian còi báo (giây)",
                 "value": "soundTime",
                 "type": "number",
                 "required": false,
@@ -2473,14 +1958,14 @@
             "soundTime": ""
         },
         "payload": "",
-        "submit": "submit",
+        "submit": "Cập nhật",
         "cancel": "",
         "topic": "topic",
         "topicType": "msg",
         "splitLayout": "",
         "className": "",
-        "x": 90,
-        "y": 640,
+        "x": 110,
+        "y": 740,
         "wires": [
             [
                 "18b818b2e8eab5aa",
@@ -2497,7 +1982,7 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "Incorrect input in {{msg.payload.feeds[0].field5}} times",
+        "label": "Mở cửa sai {{msg.payload.feeds[0].field5}} lần",
         "format": "",
         "layout": "row-spread",
         "className": "",
@@ -2505,8 +1990,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 410,
-        "y": 280,
+        "x": 630,
+        "y": 360,
         "wires": []
     },
     {
@@ -2518,7 +2003,7 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "will lock in {{msg.payload.feeds[0].field6}} seconds",
+        "label": "sẽ khóa trong {{msg.payload.feeds[0].field6}} giây",
         "format": "",
         "layout": "row-spread",
         "className": "",
@@ -2526,8 +2011,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 410,
-        "y": 340,
+        "x": 630,
+        "y": 420,
         "wires": []
     },
     {
@@ -2539,7 +2024,7 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "and alarm will sound within {{msg.payload.feeds[0].field7}} seconds",
+        "label": "và còi báo trong {{msg.payload.feeds[0].field7}} giây",
         "format": "",
         "layout": "row-spread",
         "className": "",
@@ -2547,8 +2032,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 410,
-        "y": 400,
+        "x": 630,
+        "y": 480,
         "wires": []
     },
     {
@@ -2561,7 +2046,7 @@
         "width": 0,
         "height": 0,
         "passthru": false,
-        "label": "Change",
+        "label": "Thay đổi",
         "tooltip": "",
         "color": "",
         "bgcolor": "",
@@ -2583,13 +2068,13 @@
         "id": "7a7c6c12ad100fcc",
         "type": "change",
         "z": "0ea43cd9bfdfad89",
-        "name": "show form",
+        "name": "hiện form thay đổi",
         "rules": [
             {
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"group\":{\"show\":[\"Setting_Others_Form\"]}}",
+                "to": "{\"group\":{\"show\":[\"Cài_đặt_Others_Form\"]}}",
                 "tot": "json"
             }
         ],
@@ -2598,7 +2083,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 290,
+        "x": 310,
         "y": 560,
         "wires": [
             [
@@ -2622,13 +2107,13 @@
         "id": "18b818b2e8eab5aa",
         "type": "change",
         "z": "0ea43cd9bfdfad89",
-        "name": "hide form",
+        "name": "ẩn form",
         "rules": [
             {
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"group\":{\"hide\":[\"Setting_Others_Form\"]}}",
+                "to": "{\"group\":{\"hide\":[\"Cài_đặt_Others_Form\"]}}",
                 "tot": "json"
             }
         ],
@@ -2638,7 +2123,7 @@
         "to": "",
         "reg": false,
         "x": 320,
-        "y": 480,
+        "y": 660,
         "wires": [
             [
                 "5fd1e1dcb99baa86"
@@ -2651,8 +2136,8 @@
         "z": "0ea43cd9bfdfad89",
         "name": "",
         "events": "all",
-        "x": 500,
-        "y": 480,
+        "x": 480,
+        "y": 660,
         "wires": [
             []
         ]
@@ -2678,8 +2163,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 150,
-        "y": 480,
+        "x": 130,
+        "y": 660,
         "wires": [
             [
                 "18b818b2e8eab5aa"
@@ -2701,8 +2186,8 @@
         "className": "",
         "topic": "",
         "name": "",
-        "x": 750,
-        "y": 1080,
+        "x": 1530,
+        "y": 980,
         "wires": []
     },
     {
@@ -2715,7 +2200,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "Change setting successfully",
+                "to": "Thay đổi thành công",
                 "tot": "str"
             }
         ],
@@ -2724,8 +2209,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 550,
-        "y": 1080,
+        "x": 1330,
+        "y": 980,
         "wires": [
             [
                 "b3c69bfb2a65a4cc"
@@ -2747,8 +2232,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 90,
-        "y": 840,
+        "x": 530,
+        "y": 740,
         "wires": [
             [
                 "e1879150b9d3fa6f"
@@ -2759,7 +2244,7 @@
         "id": "d8ddcd6b7e8db6a0",
         "type": "function",
         "z": "0ea43cd9bfdfad89",
-        "name": "check if all fields null",
+        "name": "kiểm tra nếu không nhập field nào",
         "func": "if(msg.payload.timesIncorrect == null &&\n    msg.payload.lockTime == null &&\n    msg.payload.soundTime == null)\n    msg.payload = null\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -2767,8 +2252,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 300,
-        "y": 720,
+        "x": 320,
+        "y": 740,
         "wires": [
             [
                 "6757bcafe1189043"
@@ -2791,8 +2276,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 270,
-        "y": 200,
+        "x": 330,
+        "y": 420,
         "wires": [
             [
                 "e267b83731751f38"
@@ -2807,8 +2292,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 410,
-        "y": 200,
+        "x": 470,
+        "y": 420,
         "wires": [
             [
                 "e4deb15bd00ce75d",
@@ -2838,8 +2323,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 90,
-        "y": 200,
+        "x": 150,
+        "y": 420,
         "wires": [
             [
                 "691f1d7debc0fd3c"
@@ -2862,8 +2347,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 290,
-        "y": 960,
+        "x": 570,
+        "y": 840,
         "wires": [
             [
                 "275936a32a2f8d9e"
@@ -2874,16 +2359,16 @@
         "id": "c2155315347f1094",
         "type": "function",
         "z": "0ea43cd9bfdfad89",
-        "name": "get lastest info",
-        "func": "const info = msg.payload.feeds[0]\nconst {created_at, entry_id, ...fields} = info\n\nmsg.payload = { \n    \"api_key\": \"8MQ6OOBCODPX2I0Z\",\n    ...fields,\n    // \"field5\": flow.get('timesIncorrect'),\n    // \"field6\": flow.get('lockTime'),\n    // \"field7\": flow.get('soundTime'),\n}\n\nif(flow.get('timesIncorrect') != null)\n    msg.payload[\"field5\"] = flow.get('timesIncorrect')\nif(flow.get('lockTime') != null)\n    msg.payload[\"field6\"] = flow.get('lockTime')\nif(flow.get('soundTime') != null)\n    msg.payload[\"field7\"] = flow.get('soundTime')\nreturn msg;",
+        "name": "xử lý dữ liệu gửi đi",
+        "func": "const info = msg.payload.feeds[0]\nconst {created_at, entry_id, ...fields} = info\n\nmsg.payload = { \n    \"api_key\": \"8MQ6OOBCODPX2I0Z\",\n    ...fields,\n}\n\nif(flow.get('timesIncorrect') != null)\n    msg.payload[\"field5\"] = flow.get('timesIncorrect')\nif(flow.get('lockTime') != null)\n    msg.payload[\"field6\"] = flow.get('lockTime')\nif(flow.get('soundTime') != null)\n    msg.payload[\"field7\"] = flow.get('soundTime')\n    \nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 580,
-        "y": 960,
+        "x": 910,
+        "y": 840,
         "wires": [
             [
                 "66767046bf9cdafe"
@@ -2898,8 +2383,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 430,
-        "y": 960,
+        "x": 730,
+        "y": 840,
         "wires": [
             [
                 "c2155315347f1094"
@@ -2929,11 +2414,10 @@
                 "valueValue": "application/json"
             }
         ],
-        "x": 750,
-        "y": 960,
+        "x": 1110,
+        "y": 840,
         "wires": [
             [
-                "691f1d7debc0fd3c",
                 "27f95c5d7a79ede5",
                 "0756b3e0e75f6585",
                 "9912efebf35a7ed0",
@@ -2974,8 +2458,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 120,
-        "y": 960,
+        "x": 680,
+        "y": 740,
         "wires": [
             [
                 "88d882676b240836"
@@ -3001,12 +2485,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1160,
-        "y": 880,
+        "x": 1440,
+        "y": 760,
         "wires": [
             [
-                "d0fa82b41b593c21",
-                "209849b5adeb8427"
+                "d0fa82b41b593c21"
             ]
         ]
     },
@@ -3024,8 +2507,8 @@
         "correl": "",
         "expiry": "",
         "broker": "0ebf5054103628db",
-        "x": 1400,
-        "y": 880,
+        "x": 1660,
+        "y": 760,
         "wires": []
     },
     {
@@ -3047,8 +2530,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1160,
-        "y": 960,
+        "x": 1440,
+        "y": 840,
         "wires": [
             [
                 "a1a2b3a887a43904"
@@ -3061,7 +2544,7 @@
         "z": "0ea43cd9bfdfad89",
         "name": "",
         "topic": "08_modify_lock_time",
-        "qos": "2",
+        "qos": "",
         "retain": "",
         "respTopic": "",
         "contentType": "",
@@ -3069,8 +2552,8 @@
         "correl": "",
         "expiry": "",
         "broker": "0ebf5054103628db",
-        "x": 1380,
-        "y": 960,
+        "x": 1640,
+        "y": 840,
         "wires": []
     },
     {
@@ -3092,8 +2575,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1160,
-        "y": 1020,
+        "x": 1440,
+        "y": 900,
         "wires": [
             [
                 "a8bb0f4276235937"
@@ -3106,7 +2589,7 @@
         "z": "0ea43cd9bfdfad89",
         "name": "",
         "topic": "08_modify_sound_time",
-        "qos": "2",
+        "qos": "",
         "retain": "",
         "respTopic": "",
         "contentType": "",
@@ -3114,8 +2597,8 @@
         "correl": "",
         "expiry": "",
         "broker": "0ebf5054103628db",
-        "x": 1390,
-        "y": 1020,
+        "x": 1650,
+        "y": 900,
         "wires": []
     },
     {
@@ -3133,8 +2616,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 970,
-        "y": 880,
+        "x": 1290,
+        "y": 760,
         "wires": [
             [
                 "e0c237f0422b83af"
@@ -3156,8 +2639,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 970,
-        "y": 960,
+        "x": 1290,
+        "y": 840,
         "wires": [
             [
                 "94be16cd421f8e31"
@@ -3179,66 +2662,12 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 970,
-        "y": 1020,
+        "x": 1290,
+        "y": 900,
         "wires": [
             [
                 "1e8db42beb7b9d17"
             ]
         ]
-    },
-    {
-        "id": "209849b5adeb8427",
-        "type": "debug",
-        "z": "0ea43cd9bfdfad89",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1300,
-        "y": 780,
-        "wires": []
-    },
-    {
-        "id": "3d7660c58f7dab3e",
-        "type": "mqtt in",
-        "z": "0ea43cd9bfdfad89",
-        "name": "",
-        "topic": "08_modify_incorrect_times",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "0ebf5054103628db",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 1190,
-        "y": 1160,
-        "wires": [
-            [
-                "df733cb72e726c9a"
-            ]
-        ]
-    },
-    {
-        "id": "df733cb72e726c9a",
-        "type": "debug",
-        "z": "0ea43cd9bfdfad89",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1440,
-        "y": 1160,
-        "wires": []
     }
 ]
